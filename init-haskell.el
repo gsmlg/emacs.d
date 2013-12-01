@@ -1,5 +1,9 @@
 (require-package 'haskell-mode)
 
+(require-package 'flycheck-hdevtools)
+(after-load 'flycheck
+  (require 'flycheck-hdevtools))
+
 (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook))
   (add-hook hook 'turn-on-haskell-doc-mode))
 
