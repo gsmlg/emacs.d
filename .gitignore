@@ -26,3 +26,5 @@ site-lisp/package/
 /frame-restore-parameters
 /.achievements
 /.bookmarks.el
+/history
+/helm-adaptive-history

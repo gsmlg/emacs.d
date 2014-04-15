@@ -64,6 +64,10 @@
   (after-load 'subword
     (diminish 'subword-mode)))
 
+
+(when (fboundp 'global-prettify-symbols-mode)
+  (global-prettify-symbols-mode))
+
 
 (require-package 'undo-tree)
 (global-undo-tree-mode)
@@ -227,7 +231,8 @@
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
 ;;----------------------------------------------------------------------------
 (require-package 'move-text)
-(move-text-default-bindings)
+(global-set-key [M-up] 'move-text-up)
+(global-set-key [M-down] 'move-text-down)
 (global-set-key [M-S-up] 'move-text-up)
 (global-set-key [M-S-down] 'move-text-down)
 
@@ -332,6 +337,12 @@ With arg N, insert N newlines."
 
 (require-package 'highlight-escape-sequences)
 (hes-mode)
+
+
+(require-package 'guide-key)
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"))
+(guide-key-mode 1)
+(diminish 'guide-key-mode)
 
 
 (provide 'init-editing-utils)
