@@ -11,6 +11,7 @@
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-a-win* (eq system-type 'windows-nt))
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
@@ -20,6 +21,8 @@
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
+(when *is-a-win*
+  (require 'init-windows-nt))
 
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
