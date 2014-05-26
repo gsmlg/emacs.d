@@ -22,7 +22,8 @@
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 (when *is-a-win*
-  (require 'init-windows-nt))
+  ;; (require 'init-windows-nt)
+  )
 
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
@@ -55,6 +56,7 @@
 (require 'init-sessions)
 (require 'init-fonts)
 (require 'init-mmm)
+(require 'init-sr-speedbar)
 
 (require 'init-editing-utils)
 
