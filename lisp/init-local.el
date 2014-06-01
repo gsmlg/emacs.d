@@ -1,17 +1,38 @@
 ;; init-local local settings
 
+;; key bindings
+;; remap help
+(global-set-key (kbd "M-?") 'help-command)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+
+;; set global-mode-string
+;(add-to-list 'global-mode-string  current-time-string)
+
+;; set gnus news group
+;(setq gnus-select-method '(nntp "news.supernews.com"))
+
+
+
 ;; set indent level for all mode
 (setq preferred-indent-level 4)
 
-(setq js2-basic-offset preferred-indent-level
-      js-indent-level preferred-indent-level
-      coffee-tab-width preferred-indent-level
-      sgml-basic-offset preferred-indent-level
-      sh-basic-offset preferred-indent-level
-      c-basic-offset preferred-indent-level
-      ruby-indent-level preferred-indent-level
-      css-indent-offset preferred-indent-level
-      )
+(defun gsmlg/set-indent (&optional width)
+  "set the indent of each language mode
+now in js js2 coffeescript sgml(html,xml) sh(shell) c ruby css
+should be set as samewidth"
+  (interactive)
+  (let ((indent-width (or width preferred-indent-level)))
+  (setq js2-basic-offset indent-width
+        js-indent-level indent-width
+        coffee-tab-width indent-width
+        sgml-basic-offset indent-width
+        sh-basic-offset indent-width
+        c-basic-offset indent-width
+        ruby-indent-level indent-width
+        css-indent-offset indent-width
+        )))
+;; run indent settings first time
+(gsmlg/set-indent)
 
 ;; add w3m support
 (require-package 'w3m)

@@ -57,7 +57,6 @@
 (require 'init-fonts)
 (require 'init-mmm)
 (require 'init-sr-speedbar)
-
 (require 'init-editing-utils)
 
 (require 'init-vc)
@@ -92,6 +91,7 @@
 (when *spell-check-support-enabled*
   (require 'init-spelling))
 
+(require 'init-projectile)
 (require 'init-marmalade)
 (require 'init-misc)
 
