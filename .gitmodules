@@ -1,0 +1,6 @@
+[submodule "yasnippet-snippets"]
+	path = yasnippet-snippets
+	url = https://github.com/AndreaCrotti/yasnippet-snippets
+[submodule "yasmate"]
+	path = yasmate
+	url = https://github.com/capitaomorte/yasmate

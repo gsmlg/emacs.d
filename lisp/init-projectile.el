@@ -1,7 +1,8 @@
-;;; package --- init-projectile
-;;; Commentary:
-;;; projectile.el at https://github.com/bbatsov/projectile
-;;; Code:
+;;--------------------------------------------------------------------
+;; set projectile for manage projects
+;; projectile.el at https://github.com/bbatsov/projectile
+;;--------------------------------------------------------------------
+
 (setq projectile-keymap-prefix (kbd "<f9>"))
 (require-package 'projectile)
 
@@ -21,7 +22,7 @@
 
 
 ;; set projectile global mode nil
-(projectile-global-mode -1)
+(projectile-global-mode 1)
 
 ;; force native indexing on windows
 ;; alien require unix command like find, git, etc.
@@ -97,4 +98,3 @@
 ;; use `M-x' `customize-group' `RET' `projectile' `RET'
 
 (provide 'init-projectile)
-;;; init-projectile.el ends here
