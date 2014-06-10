@@ -1,10 +1,10 @@
+[submodule "snippets"]
+	path = snippets
+	url = git@github.com:gsmlg/snippets.git
+	branch = master
 [submodule "yasnippet-snippets"]
 	path = yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets
 [submodule "yasmate"]
 	path = yasmate
 	url = https://github.com/capitaomorte/yasmate
-[submodule "snippets"]
-	path = snippets
-	url = https://github.com/gsmlg/snippets
-	branch = master
