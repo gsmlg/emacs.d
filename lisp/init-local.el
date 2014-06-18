@@ -1,9 +1,11 @@
 ;; init-local local settings
 
 ;; key bindings
-;; remap help
-(global-set-key (kbd "M-?") 'help-command)
+;; remap help , help is at <F1>
 (global-set-key (kbd "C-h") 'delete-backward-char)
+
+;; add editorconfig plugin for projects
+(require-package 'editorconfig)
 
 ;; set global-mode-string
 ;(add-to-list 'global-mode-string  current-time-string)
