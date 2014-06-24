@@ -13,16 +13,8 @@
      (add-hook 'projectile-mode-hook 'gsmlg/projectile-define-switch-project-key)
      ))
 
-(defun gsmlg/projectile-define-switch-project-key ()
-  "add to projectile hook to bind keys"
-  (let ((map projectile-command-map))
-    (define-key map (kbd "C-M-<f9>") 'projectile-switch-project)
-    )
-  )
-
-
 ;; set projectile global mode nil
-(projectile-global-mode 1)
+(projectile-global-mode -1)
 
 ;; force native indexing on windows
 ;; alien require unix command like find, git, etc.

@@ -13,5 +13,9 @@
   (require-package 'setup-cygwin)
 )
 
+(when (executable-find "everywhere.exe")
+  (require-package 'everywhere)
+  )
+
 (provide 'init-windows-nt)
 ;;; init-windows-nt.el ends here
