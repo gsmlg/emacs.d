@@ -10,11 +10,10 @@
   '(progn
      (global-set-key (kbd "C-<f9>") 'projectile-mode)
     ;; set the default keymap prefix from <C-c p> to this:
-     (add-hook 'projectile-mode-hook 'gsmlg/projectile-define-switch-project-key)
      ))
 
 ;; set projectile global mode nil
-(projectile-global-mode -1)
+(projectile-global-mode 1)
 
 ;; force native indexing on windows
 ;; alien require unix command like find, git, etc.
