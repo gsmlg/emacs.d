@@ -155,6 +155,9 @@
 (global-set-key (kbd "C-;") 'ace-jump-mode)
 (global-set-key (kbd "C-:") 'ace-jump-word-mode)
 
+(require-package 'ace-jump-buffer)
+(global-set-key (kbd "C-x b") 'ace-jump-buffer)
+(global-set-key (kbd "C-u C-x b") 'ace-jump-buffer-other-window)
 
 (require-package 'multiple-cursors)
 ;; multiple-cursors

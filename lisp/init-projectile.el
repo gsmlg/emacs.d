@@ -5,7 +5,7 @@
 
 (setq projectile-keymap-prefix (kbd "<f9>"))
 (require-package 'projectile)
-(require-package 'perspective)
+(require-package 'persp-projectile)
 
 (eval-after-load 'projectile
   '(progn
