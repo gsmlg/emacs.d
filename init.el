@@ -130,6 +130,11 @@
   (error "Please move init-local.el to ~/.emacs.d/lisp"))
 (require 'init-local nil t)
 
+;;----------------------------------------------------------------------------
+;; Add org2blog for my blogs
+;;----------------------------------------------------------------------------
+(require 'init-blogs)
+
 
 ;;----------------------------------------------------------------------------
 ;; Locales (setting them earlier in this file doesn't work in X)
