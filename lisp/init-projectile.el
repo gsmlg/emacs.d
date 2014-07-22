@@ -5,6 +5,7 @@
 
 (setq projectile-keymap-prefix (kbd "<f9>"))
 (require-package 'projectile)
+(require-package 'persp-mode)
 (require-package 'persp-projectile)
 
 (eval-after-load 'projectile
