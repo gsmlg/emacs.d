@@ -2,7 +2,8 @@
 (when (>= emacs-major-version 24)
   (require-package 'js2-mode)
   (require-package 'ac-js2)
-  (require-package 'coffee-mode))
+  (require-package 'coffee-mode)
+  (require-package 'literate-coffee-mode))
 (require-package 'js-comint)
 
 (defcustom preferred-javascript-mode

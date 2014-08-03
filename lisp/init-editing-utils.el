@@ -142,7 +142,12 @@
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
 ;; To be able to M-x without meta
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+(global-set-key (kbd "C-x C-m") 'helm-M-x)
+
+;; helm find and grep
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-g") 'helm-do-grep)
+(global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
 
 ;; Vimmy alternatives to M-^ and C-u M-^
 (global-set-key (kbd "C-c j") 'join-line)

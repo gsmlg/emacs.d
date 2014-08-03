@@ -50,6 +50,7 @@
 (require 'init-ido)
 (require 'init-hippie-expand)
 (require 'init-auto-complete)
+(require 'init-helm)
 (require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-sessions)

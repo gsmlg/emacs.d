@@ -5,20 +5,20 @@
 
 (setq projectile-keymap-prefix (kbd "<f9>"))
 (require-package 'projectile)
-(require-package 'persp-mode)
-(require-package 'persp-projectile)
+;;(require-package 'persp-mode)
+;;(require-package 'persp-projectile)
 
 (eval-after-load 'projectile
   '(progn
      (global-set-key (kbd "C-<f9>") 'projectile-mode)
      ;; set the default keymap prefix from <C-c p> to this:
-     (define-key projectile-mode-map (kbd "s-s" ) 'projectile-persp-switch-project)
+     ;;(define-key projectile-mode-map (kbd "s-s" ) 'projectile-persp-switch-project)
      (setq projectile-enable-idle-timer t)
      ))
 
 ;; set projectile global mode nil
 (projectile-global-mode 1)
-(persp-mode)
+;;(persp-mode)
 
 ;; force native indexing on windows
 ;; alien require unix command like find, git, etc.
