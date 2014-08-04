@@ -146,7 +146,7 @@
 
 ;; helm find and grep
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x C-g") 'helm-do-grep)
+(global-set-key (kbd "C-x g") 'helm-do-grep)
 (global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
 
 ;; Vimmy alternatives to M-^ and C-u M-^
