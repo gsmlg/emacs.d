@@ -13,6 +13,8 @@
   '(require-package 'helm-projectile))
 
 (defvar helm-dash-docsets-path "~/.docsets")
+(when (not (file-exists-p helm-dash-docsets-path))
+  (make-directory helm-dash-docsets-path))
 (setq helm-dash-min-length 2)
 (require 'dash)
 (setq helm-dash-common-docsets
