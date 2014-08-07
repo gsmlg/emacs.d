@@ -18,6 +18,9 @@
      (setq projectile-enable-idle-timer t)
      (define-key projectile-mode-map (kbd "<f9> f") 'helm-projectile)
      ;; (define-key projectile-mode-map (kbd "<f9> p") 'projectile-persp-switch-project)
+     (when 'helm-do-ag
+       (define-key projectile-mode-map (kbd "<f9> g") '(lambda ()
+         (helm-do-ag (projectile-project-root)))))
      ))
 
 ;; set projectile global mode nil
