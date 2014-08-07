@@ -1,5 +1,6 @@
 ;; setup helm incremental completion and selection narrowing framework
 (require-package 'helm)
+(require-package 'helm-cmd-t)
 (require-package 'helm-ls-git)
 (require-package 'pcsv)
 (require-package 'esqlite)
@@ -9,8 +10,11 @@
 (require-package 'helm-flycheck)
 (eval-after-load 'flycheck
   '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
+
 (eval-after-load 'projectile
-  '(require-package 'helm-projectile))
+  '(progn
+     (require-package 'helm-projectile)
+     ))
 
 (defvar helm-dash-docsets-path "~/.docsets")
 (when (not (file-exists-p helm-dash-docsets-path))
@@ -31,20 +35,60 @@
                          docsets)))
                    (directory-files helm-dash-docsets-path))))
         docs))
+(global-set-key (kbd "C-`") 'helm-dash-at-oint)
 
 (require 'helm-config)
+
+(require-package 'helm-swoop)
+
+;; Change the keybinds to whatever you like :)
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+
+;; When doing isearch, hand the word over to helm-swoop
+(define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+;; From helm-swoop to helm-multi-swoop-all
+;; (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+;; When doing evil-search, hand the word over to helm-swoop
+;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+
+;; Save buffer when helm-multi-swoop-edit complete
+(setq helm-multi-swoop-edit-save t)
+
+;; If this value is t, split window inside the current window
+(setq helm-swoop-split-with-multiple-windows nil)
+
+;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+(setq helm-swoop-split-direction 'split-window-vertically)
+
+;; If nil, you can slightly boost invoke speed in exchange for text color
+(setq helm-swoop-speed-or-color nil)
+
+;; set heml-ag
+(when (executable-find "ag")
+  (require-package 'helm-ag)
+  (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+  (setq helm-ag-command-option "--all-text")
+  (setq helm-ag-thing-at-point 'symbol)
+  )
+
+;; set from helm-cmd-t
+(require 'helm-C-x-b)
+(global-set-key (kbd "C-x b") 'helm-C-x-b)
 
 ;; replace eshell pcomplete
 (add-hook 'eshell-mode-hook
           #'(lambda ()
-               (progn
-                 (define-key eshell-mode-map
-                   [remap eshell-pcomplete]
-                   'helm-esh-pcomplete)
-                 (define-key eshell-mode-map
-                   (kbd "M-p")
-                   'helm-eshell-history)
-                 )))
+              (progn
+                (define-key eshell-mode-map
+                  [remap eshell-pcomplete]
+                  'helm-esh-pcomplete)
+                (define-key eshell-mode-map
+                  (kbd "M-p")
+                  'helm-eshell-history)
+                )))
 
 (helm-mode 1)
 

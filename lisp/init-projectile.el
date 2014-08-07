@@ -5,20 +5,23 @@
 
 (setq projectile-keymap-prefix (kbd "<f9>"))
 (require-package 'projectile)
-;;(require-package 'persp-mode)
+
+;; perspective for projectile quickly switch project
+;;(require-package 'perspective)
 ;;(require-package 'persp-projectile)
+;;(persp-mode)
 
 (eval-after-load 'projectile
   '(progn
      (global-set-key (kbd "C-<f9>") 'projectile-mode)
      ;; set the default keymap prefix from <C-c p> to this:
-     ;;(define-key projectile-mode-map (kbd "s-s" ) 'projectile-persp-switch-project)
      (setq projectile-enable-idle-timer t)
+     (define-key projectile-mode-map (kbd "<f9> f") 'helm-projectile)
+     ;; (define-key projectile-mode-map (kbd "<f9> p") 'projectile-persp-switch-project)
      ))
 
 ;; set projectile global mode nil
 (projectile-global-mode 1)
-;;(persp-mode)
 
 ;; force native indexing on windows
 ;; alien require unix command like find, git, etc.
@@ -27,7 +30,7 @@
   ;; two methods - native and alien
   (setq projectile-indexing-method 'native))
 ;; enable caching file index
-(setq projectile-enable-caching t)
+(setq projectile-enable-caching nil)
 
 ;; use <C-c p f> which is `projectile-find-file' find a file in project
 ;; use <C-u> <C-c p f> will rebuild the indexed of Projectile and find file
@@ -88,8 +91,10 @@
 
 
 ;; You can set the values of
-;; `projectile-project-root-files', `projectile-project-root-files-top-down-recurring',
-;; `projectile-project-root-files-bottom-up' and `projectile-project-root-files-functions'
+;; `projectile-project-root-files',
+;; `projectile-project-root-files-top-down-recurring',
+;; `projectile-project-root-files-bottom-up'
+;; `projectile-project-root-files-functions'
 ;; to customize how project roots are identified.
 ;; use `M-x' `customize-group' `RET' `projectile' `RET'
 
