@@ -20,6 +20,7 @@
      ;; (define-key projectile-mode-map (kbd "<f9> p") 'projectile-persp-switch-project)
      (when 'helm-do-ag
        (define-key projectile-mode-map (kbd "<f9> g") '(lambda ()
+         (interactive)
          (helm-do-ag (projectile-project-root)))))
      ))
 
