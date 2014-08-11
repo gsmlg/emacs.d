@@ -32,6 +32,8 @@ been saved."
   (add-hook hook (lambda () (subword-mode +1))))
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
+(add-hook 'haskell-interactive-mode-hook 'sanityinc/no-trailing-whitespace)
+
 (after-load 'haskell-interactive-mode
   (diminish 'interactive-haskell-mode " IntHS"))
 
@@ -63,5 +65,23 @@ been saved."
      (list alias " at \\(.*\\.\\(?:l?[gh]hs\\|hi\\)\\):\\([0-9]+\\):\\([0-9]+\\)-[0-9]+$" 1 2 3 0 1))
     (add-to-list
      'compilation-error-regexp-alist alias)))
+
+
+
+;; Hook auto-complete into the completions provided by the inferior
+;; haskell process, if any.
+
+(require-package 'ac-haskell-process)
+
+(add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
+(add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
+
+(after-load 'haskell-mode
+  (define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
+
+(after-load 'auto-complete
+  (add-to-list 'ac-modes 'haskell-interactive-mode)
+  (add-hook 'haskell-interactive-mode-hook 'set-auto-complete-as-completion-at-point-function))
+
 
 (provide 'init-haskell)
