@@ -35,7 +35,7 @@
                          docsets)))
                    (directory-files helm-dash-docsets-path))))
         docs))
-(global-set-key (kbd "C-`") 'helm-dash-at-oint)
+(global-set-key (kbd "C-`") 'helm-dash-at-point)
 
 (require 'helm-config)
 

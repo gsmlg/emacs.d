@@ -88,5 +88,15 @@
     (add-hook 'skewer-mode-hook
               (lambda () (inferior-js-keys-mode -1)))))
 
+(require-package 'js-doc)
+(setq js-doc-mail-address (shell-command-to-string "git config --get user.email")
+      js-doc-author (format (concat (shell-command-to-string "git config --get user.name") " <%s>") js-doc-mail-address)
+      js-doc-url (shell-command-to-string "git config --get remote.origin.url")
+      js-doc-license "GPLv3")
+
+(add-hook 'js2-mode-hook
+          #'(lambda ()
+              (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
+              (define-key js2-mode-map "@" 'js-doc-insert-tag)))
 
 (provide 'init-javascript)

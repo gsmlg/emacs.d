@@ -34,7 +34,7 @@
   ;; two methods - native and alien
   (setq projectile-indexing-method 'native))
 ;; enable caching file index
-(setq projectile-enable-caching nil)
+(setq projectile-enable-caching t)
 
 ;; use <C-c p f> which is `projectile-find-file' find a file in project
 ;; use <C-u> <C-c p f> will rebuild the indexed of Projectile and find file
