@@ -35,3 +35,4 @@ site-lisp/package/
 /projectile*
 /server
 /session*
+/eshell
