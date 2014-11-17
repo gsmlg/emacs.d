@@ -45,8 +45,4 @@ should be set as samewidth"
 ;; (setq evernote-developer-token "")
 
 
-;; set toggle-viper-mode key
-(global-set-key (kbd "<f12>") 'toggle-viper-mode)
-
-
 (provide 'init-local)

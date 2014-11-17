@@ -240,7 +240,7 @@
 
 
 ;; A quick way to jump to the definition of a function given its key binding
-(global-set-key (kbd "C-h K") 'find-function-on-key)
+(global-set-key (kbd "<f1> K") 'find-function-on-key)
 
 
 
