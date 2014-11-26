@@ -103,7 +103,6 @@
   (require 'init-spelling))
 
 (require 'init-projectile)
-(require 'init-marmalade)
 (require 'init-misc)
 
 (require 'init-dash)
