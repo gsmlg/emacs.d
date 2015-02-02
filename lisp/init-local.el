@@ -33,8 +33,9 @@ should be set as samewidth"
         ruby-indent-level indent-width
         css-indent-offset indent-width
         )))
+
 ;; run indent settings first time
-(gsmlg/set-indent)
+(gsmlg/set-indent preferred-indent-level)
 
 ;; add w3m support
 (require-package 'w3m)

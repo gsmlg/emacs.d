@@ -37,3 +37,6 @@ site-lisp/package/
 /session*
 /eshell
 /viper
+/eshell
+/.cask/
+/.sx/

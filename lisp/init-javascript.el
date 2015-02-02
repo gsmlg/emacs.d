@@ -3,6 +3,8 @@
 (maybe-require-package 'ac-js2)
 (maybe-require-package 'coffee-mode)
 (require-package 'js-comint)
+(require-package 'tern)
+(require-package 'tern-auto-complete)
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -35,6 +37,9 @@
   (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
 
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
+
+  (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+  (add-hook 'js2-mode-hook (lambda () (tern-ac-setup)))
 
   (setq-default
    js2-basic-offset preferred-javascript-indent-level
