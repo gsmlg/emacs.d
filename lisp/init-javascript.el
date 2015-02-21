@@ -3,6 +3,7 @@
 (maybe-require-package 'ac-js2)
 (maybe-require-package 'coffee-mode)
 (require-package 'js-comint)
+(require-package 'jsx-mode)
 (require-package 'tern)
 (require-package 'tern-auto-complete)
 
@@ -111,5 +112,7 @@
           #'(lambda ()
               (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
               (define-key js2-mode-map "@" 'js-doc-insert-tag)))
+
+(add-to-list 'auto-mode-alist '("\\.jsx" . jsx-mode))
 
 (provide 'init-javascript)
