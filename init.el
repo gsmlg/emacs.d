@@ -42,6 +42,7 @@
 (require-package 'mwe-log-commands)
 
 (require 'init-frame-hooks)
+(require 'init-sr-speedbar)
 (require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
@@ -64,7 +65,6 @@
 (require 'init-sessions)
 (require 'init-fonts)
 (require 'init-mmm)
-(require 'init-sr-speedbar)
 (require 'init-editing-utils)
 
 (require 'init-vc)
@@ -139,11 +139,6 @@
 (when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
   (error "Please move init-local.el to ~/.emacs.d/lisp"))
 (require 'init-local nil t)
-
-;;----------------------------------------------------------------------------
-;; Add org2blog for my blogs
-;;----------------------------------------------------------------------------
-(require 'init-blogs)
 
 
 ;;----------------------------------------------------------------------------
