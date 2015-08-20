@@ -119,5 +119,23 @@
               (define-key js2-mode-map "@" 'js-doc-insert-tag)))
 
 (add-to-list 'auto-mode-alist '("\\.jsx" . jsx-mode))
+;; jsx-mode
+(setq-default jsx-indent-level preferred-javascript-indent-level)
+(flycheck-define-checker jsxhint-checker
+  "A JSX syntax and style checker based on JSXHint."
+
+  :command ("jsxhint" source)
+  :error-patterns
+  ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
+  :modes (jsx-mode))
+
+(add-hook 'jsx-mode-hook
+          (lambda () 
+                (auto-complete-mode 1)
+                (flycheck-select-checker 'jsxhint-checker)
+                (flycheck-mode)
+            ))
+
+
 
 (provide 'init-javascript)
