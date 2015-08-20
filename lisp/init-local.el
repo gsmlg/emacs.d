@@ -26,6 +26,7 @@ should be set as samewidth"
   (let ((indent-width (or width preferred-indent-level)))
   (setq js2-basic-offset indent-width
         js-indent-level indent-width
+        jsx-indent-level indent-width
         coffee-tab-width indent-width
         sgml-basic-offset indent-width
         sh-basic-offset indent-width
