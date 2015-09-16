@@ -21,7 +21,9 @@
     (lambda ()
       (interactive)
       (funcall s-f)
-      (set-window-buffer (next-window) (other-buffer)))))
+      (let ((target-window (next-window)))
+        (set-window-buffer target-window (other-buffer))
+        (select-window target-window)))))
 
 (global-set-key "\C-x2" (split-window-func-with-other-buffer 'split-window-vertically))
 (global-set-key "\C-x3" (split-window-func-with-other-buffer 'split-window-horizontally))
@@ -71,7 +73,8 @@ Call a second time to restore the original window configuration."
 
 
 
-(windmove-default-keybindings 'control)
+(unless (memq window-system '(nt w32))
+  (windmove-default-keybindings 'control))
 
 
 (provide 'init-windows)
