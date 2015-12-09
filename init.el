@@ -16,6 +16,15 @@
 (defconst *is-a-win* (eq system-type 'windows-nt))
 
 ;;----------------------------------------------------------------------------
+;; Temporarily reduce garbage collection during startup
+;;----------------------------------------------------------------------------
+(defconst sanityinc/initial-gc-cons-threshold gc-cons-threshold
+  "Initial value of `gc-cons-threshold' at start-up time.")
+(setq gc-cons-threshold (* 128 1024 1024))
+(add-hook 'after-init-hook
+          (lambda () (setq gc-cons-threshold sanityinc/initial-gc-cons-threshold)))
+
+;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -49,7 +58,6 @@
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
-(require 'init-proxies)
 (require 'init-helm)
 ;; (require 'init-dired)
 (require 'init-isearch)
@@ -68,6 +76,8 @@
 (require 'init-fonts)
 (require 'init-mmm)
 (require 'init-editing-utils)
+(require 'init-whitespace)
+(require 'init-fci)
 
 (require 'init-vc)
 (require 'init-darcs)
@@ -89,6 +99,7 @@
 (require 'init-haml)
 (require 'init-python-mode)
 (require 'init-haskell)
+(require 'init-elm)
 (require 'init-ruby-mode)
 (require 'init-rails)
 (require 'init-sql)
@@ -96,7 +107,7 @@
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
-(when (>= emacs-major-version 24)
+(unless (version<= emacs-version "24.2")
   (require 'init-clojure)
   (require 'init-clojure-cider))
 (require 'init-common-lisp)
