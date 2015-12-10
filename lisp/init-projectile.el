@@ -93,6 +93,9 @@
 ;; use `projectile-tags-command' is the command projectile generate tags
 ;; use `projectile-regenerate-tags' is used to regenerate tags
 
+;; genrate tags without prop
+(setq tags-revert-without-query 1)
+
 
 ;; You can set the values of
 ;; `projectile-project-root-files',
