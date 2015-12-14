@@ -33,6 +33,7 @@ should be set as samewidth"
         c-basic-offset indent-width
         ruby-indent-level indent-width
         css-indent-offset indent-width
+        yaml-indent-offset indent-width
         )))
 
 ;; run indent settings first time
