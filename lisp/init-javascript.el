@@ -119,7 +119,6 @@
               (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
               (define-key js2-mode-map "@" 'js-doc-insert-tag)))
 
-(add-to-list 'auto-mode-alist '("\\.jsx" . jsx-mode))
 ;; jsx-mode
 (setq-default jsx-indent-level preferred-javascript-indent-level)
 (after-load 'flycheck
