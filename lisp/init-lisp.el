@@ -19,7 +19,7 @@
       (eval-region (min (point) (mark)) (max (point) (mark)))
     (pp-eval-last-sexp prefix)))
 
-(global-set-key (kbd "M-:") 'pp-eval-expression)
+(global-set-key [remap eval-expression] 'pp-eval-expression)
 
 (after-load 'lisp-mode
   (define-key emacs-lisp-mode-map (kbd "C-x C-e") 'sanityinc/eval-last-sexp-or-region))
@@ -141,11 +141,16 @@
   "Run `check-parens' when the current buffer is saved."
   (add-hook 'after-save-hook #'check-parens nil t))
 
+(defun sanityinc/disable-indent-guide ()
+  (when (bound-and-true-p indent-guide-mode)
+    (indent-guide-mode -1)))
+
 (defvar sanityinc/lispy-modes-hook
   '(rainbow-delimiters-mode
     enable-paredit-mode
     turn-on-eldoc-mode
     redshank-mode
+    sanityinc/disable-indent-guide
     sanityinc/enable-check-parens-on-save)
   "Hook run in all Lisp modes.")
 
@@ -169,8 +174,7 @@
 
 (defun sanityinc/emacs-lisp-setup ()
   "Enable features useful when working with elisp."
-  (set-up-hippie-expand-for-elisp)
-  (ac-emacs-lisp-mode-setup))
+  (set-up-hippie-expand-for-elisp))
 
 (defconst sanityinc/elispy-modes
   '(emacs-lisp-mode ielm-mode)
@@ -298,5 +302,7 @@
     (when (fboundp 'aggressive-indent-indent-defun)
       (aggressive-indent-indent-defun))))
 
+
+(maybe-require-package 'cask-mode)
 
 (provide 'init-lisp)
