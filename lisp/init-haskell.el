@@ -10,7 +10,12 @@
 
 (when (maybe-require-package 'intero)
   (after-load 'haskell-mode
-    (add-hook 'haskell-mode-hook 'intero-mode)))
+    (add-hook 'haskell-mode-hook 'intero-mode)
+    )
+  (after-load 'intero
+    (after-load 'flycheck
+      (flycheck-add-next-checker 'intero
+                                 '(warning . haskell-hlint)))))
 
 
 (add-auto-mode 'haskell-mode "\\.ghci\\'")
