@@ -74,10 +74,6 @@
   (setq helm-ag-thing-at-point 'symbol)
   )
 
-;; set from helm-cmd-t
-(require 'helm-C-x-b)
-(global-set-key (kbd "C-x b") 'helm-C-x-b)
-
 ;; replace eshell pcomplete
 (add-hook 'eshell-mode-hook
           #'(lambda ()
