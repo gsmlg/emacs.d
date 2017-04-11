@@ -31,7 +31,7 @@ other languages.
 
 ## Supported Emacs versions
 
-The config should run on Emacs 23.3 or greater and is designed to
+The config should run on Emacs 24.1 or greater and is designed to
 degrade smoothly - see the Travis build - but note that Emacs 24 and
 above is required for an increasing number of key packages, including
 `magit`, `company` and `flycheck`, so to get full you should use the
@@ -62,16 +62,6 @@ packages will be automatically downloaded and installed. If you
 encounter any errors at that stage, try restarting Emacs, and possibly
 running `M-x package-refresh-contents` before doing so.
 
-
-
-## Important note about `ido`
-
-This config enables `ido-mode` completion in the minibuffer wherever
-possible, which might confuse you when trying to open files using
-<kbd>C-x C-f</kbd>, e.g. when you want to open a directory to use
-`dired` -- if you get stuck, use <kbd>C-f</kbd> to drop into the
-regular `find-file` prompt. (You might want to customize the
-`ido-show-dot-for-dired` variable if this is an issue for you.)
 
 ## Updates
 
