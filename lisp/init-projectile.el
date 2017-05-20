@@ -3,38 +3,50 @@
 ;; projectile.el at https://github.com/bbatsov/projectile
 ;;--------------------------------------------------------------------
 
-(setq projectile-keymap-prefix (kbd "<f9>"))
-(require-package 'projectile)
+(when (maybe-require-package 'projectile)
+  (add-hook 'after-init-hook 'projectile-global-mode))
 
 ;; perspective for projectile quickly switch project
 ;;(require-package 'perspective)
 ;;(require-package 'persp-projectile)
 ;;(persp-mode)
 
-(eval-after-load 'projectile
+(after-load 'projectile
   '(progn
-     (global-set-key (kbd "C-<f9>") 'projectile-mode)
+     ;;(global-set-key (kbd "C-<f9>") 'projectile-mode)
      ;; set the default keymap prefix from <C-c p> to this:
+     (setq projectile-keymap-prefix (kbd "C-c p"))
      (setq projectile-enable-idle-timer t)
-     (define-key projectile-mode-map (kbd "<f9> f") 'helm-projectile)
-     ;; (define-key projectile-mode-map (kbd "<f9> p") 'projectile-persp-switch-project)
-     (when 'helm-do-ag
-       (define-key projectile-mode-map (kbd "<f9> g") '(lambda ()
-         (interactive)
-         (helm-do-ag (projectile-project-root)))))
+     ;; enable caching file index
+     (setq projectile-enable-caching t)
+     (define-key projectile-mode-map (kbd "C-c p f") 'helm-projectile)
+     ;; -- Switching projects --
+     ;; use <C-c p s> `projectile-switch-project' to switch in known projects
+     (define-key projectile-mode-map (kbd "C-c p s") 'projectile-persp-switch-project)
+     (when (maybe-require-package 'helm-do-ag)
+       (define-key projectile-mode-map (kbd "C-c p g") '(lambda ()
+                                                          (interactive)
+                                                          (helm-do-ag (projectile-project-root)))))
+     (when (maybe-require-package 'editorconfig)
+       (editorconfig-mode 1)
+       (editorconfig-apply))
+     ;; Shorter modeline
+     (setq-default
+      projectile-mode-line
+      '(:eval
+        (if (file-remote-p default-directory)
+            " Pr"
+          (format " Pr[%s]" (projectile-project-name)))))
+     ;; force native indexing on windows
+     ;; alien require unix command like find, git, etc.
+     (when *is-a-win*
+       ;; specifies the indexing method used by Projectile
+       ;; two methods - native and alien
+       (setq projectile-indexing-method 'native))
+     ;; The following code means you get a menu if you hit "C-c p" and wait
+     (after-load 'guide-key
+       (add-to-list 'guide-key/guide-key-sequence "C-c p"))
      ))
-
-;; set projectile global mode nil
-(projectile-global-mode 1)
-
-;; force native indexing on windows
-;; alien require unix command like find, git, etc.
-(when *is-a-win*
-  ;; specifies the indexing method used by Projectile
-  ;; two methods - native and alien
-  (setq projectile-indexing-method 'native))
-;; enable caching file index
-(setq projectile-enable-caching t)
 
 ;; use <C-c p f> which is `projectile-find-file' find a file in project
 ;; use <C-u> <C-c p f> will rebuild the indexed of Projectile and find file
@@ -50,10 +62,6 @@
 
 ;; If you want Projectile to be usable in every directory (even without the presence of project file):
 ;; (setq projectile-require-project-root nil)
-
-
-;; -- Switching projects --
-;; use <C-c p s> `projectile-switch-project' to switch in known projects
 
 ;; Projectile invokes the command specified in `projectile-switch-project-action' (default is `project-find-file')
 ;; When `projectile-remember-window-configs' is t (default is nil),
@@ -94,7 +102,7 @@
 ;; use `projectile-regenerate-tags' is used to regenerate tags
 
 ;; genrate tags without prop
-(setq tags-revert-without-query 1)
+;; (setq tags-revert-without-query 1)
 
 
 ;; You can set the values of
@@ -104,23 +112,5 @@
 ;; `projectile-project-root-files-functions'
 ;; to customize how project roots are identified.
 ;; use `M-x' `customize-group' `RET' `projectile' `RET'
-;;=======
-;;(when (maybe-require-package 'projectile)
-;;  (add-hook 'after-init-hook 'projectile-global-mode)
-
-  ;; The following code means you get a menu if you hit "C-c p" and wait
-;;  (after-load 'guide-key
-;;    (add-to-list 'guide-key/guide-key-sequence "C-c p"))
-
-  ;; Shorter modeline
-;;  (after-load 'projectile
-;;    (setq-default
-;;     projectile-mode-line
-;;     '(:eval
-;;       (if (file-remote-p default-directory)
-;;           " Pr"
-;;         (format " Pr[%s]" (projectile-project-name)))))))
-
-;;>>>>>>> purcell/master
 
 (provide 'init-projectile)

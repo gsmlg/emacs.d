@@ -78,6 +78,7 @@
 (add-hook 'eshell-mode-hook
           #'(lambda ()
               (progn
+                (sanityinc/no-trailing-whitespace)
                 (define-key eshell-mode-map
                   [remap eshell-pcomplete]
                   'helm-esh-pcomplete)

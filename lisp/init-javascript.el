@@ -1,23 +1,22 @@
 (maybe-require-package 'json-mode)
 (maybe-require-package 'js2-mode)
 (maybe-require-package 'coffee-mode)
-(require-package 'jsx-mode)
 (require-package 'tern)
 (require-package 'tern-auto-complete)
 
 (defcustom preferred-javascript-mode
-  (first (remove-if-not #'fboundp '(js2-mode js-mode)))
+  (first (remove-if-not #'fboundp '(js2-jsx-mode js-mode)))
   "Javascript mode to use for .js files."
   :type 'symbol
   :group 'programming
-  :options '(js2-mode js-mode))
+  :options '(js2-jsx-mode js-mode))
 
 (defconst preferred-javascript-indent-level 2)
 
 ;; Need to first remove from list if present, since elpa adds entries too, which
 ;; may be in an arbitrary order
 (eval-when-compile (require 'cl))
-(setq auto-mode-alist (cons `("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
+(setq auto-mode-alist (cons `("\\.\\(js\\|es6\\|jsx\\)\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
                             (loop for entry in auto-mode-alist
                                   unless (eq preferred-javascript-mode (cdr entry))
                                   collect entry)))
@@ -120,24 +119,6 @@
               (setq js-switch-indent-offset js2-basic-offset)
               (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
               (define-key js2-mode-map "@" 'js-doc-insert-tag)))
-
-;; jsx-mode
-(setq-default jsx-indent-level preferred-javascript-indent-level)
-(after-load 'flycheck
-    (flycheck-define-checker jsxhint-checker
-        "A JSX syntax and style checker based on JSXHint."
-
-        :command ("jsxhint" source)
-        :error-patterns
-        ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
-            :modes (jsx-mode)))
-
-(add-hook 'jsx-mode-hook
-          (lambda () 
-                (auto-complete-mode 1)
-                (flycheck-select-checker 'jsxhint-checker)
-                (flycheck-mode)
-            ))
 
 
 

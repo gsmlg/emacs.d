@@ -119,7 +119,6 @@
 (when *spell-check-support-enabled*
   (require 'init-spelling))
 
-(require 'init-projectile)
 (require 'init-misc)
 
 (require 'init-folding)
