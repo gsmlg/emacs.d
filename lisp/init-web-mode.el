@@ -11,7 +11,7 @@
 ;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (add-to-list 'auto-mode-alist '("\\.api\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
 
 ;;(setq web-mode-content-types-alist
 ;;      '(("json" . "/some/path/.*\\.api\\'")
