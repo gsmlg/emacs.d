@@ -1,15 +1,16 @@
 (maybe-require-package 'json-mode)
 (maybe-require-package 'js2-mode)
+(maybe-require-package 'rjsx-mode)
 (maybe-require-package 'coffee-mode)
 (require-package 'tern)
 (require-package 'tern-auto-complete)
 
 (defcustom preferred-javascript-mode
-  (first (remove-if-not #'fboundp '(js2-jsx-mode js-mode)))
+  (first (remove-if-not #'fboundp '(rjsx-mode js2-jsx-mode js-mode)))
   "Javascript mode to use for .js files."
   :type 'symbol
   :group 'programming
-  :options '(js2-jsx-mode js-mode))
+  :options '(rjsx-mode js2-jsx-mode js-mode))
 
 (defconst preferred-javascript-indent-level 2)
 
