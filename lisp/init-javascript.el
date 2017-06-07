@@ -2,8 +2,8 @@
 (maybe-require-package 'js2-mode)
 (maybe-require-package 'rjsx-mode)
 (maybe-require-package 'coffee-mode)
-(require-package 'tern)
-(require-package 'tern-auto-complete)
+(maybe-require-package 'tern)
+(maybe-require-package 'company-tern)
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(rjsx-mode js2-jsx-mode js-mode)))
@@ -43,7 +43,7 @@
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
 
   (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-  (add-hook 'js2-mode-hook (lambda () (tern-ac-setup)))
+  (add-hook 'js2-mode-hook (lambda () (add-to-list 'company-backends 'company-tern)))
 
   (setq-default
    js2-basic-offset preferred-javascript-indent-level
