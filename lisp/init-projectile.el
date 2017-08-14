@@ -4,7 +4,7 @@
 ;;--------------------------------------------------------------------
 
 (when (maybe-require-package 'projectile)
-  (add-hook 'after-init-hook 'projectile-global-mode))
+  (add-hook 'after-init-hook 'projectile-mode))
 
 ;; perspective for projectile quickly switch project
 ;; (require-package 'perspective)
@@ -32,8 +32,8 @@
      projectile-mode-line
      '(:eval
        (if (file-remote-p default-directory)
-           " Pr"
-         (format " Pr[%s]" (projectile-project-name)))))
+           " Proj"
+         (format " Proj[%s]" (projectile-project-name)))))
     ;; force native indexing on windows
     ;; alien require unix command like find, git, etc.
     (when *is-a-win*
