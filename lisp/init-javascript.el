@@ -4,6 +4,8 @@
 (maybe-require-package 'coffee-mode)
 (maybe-require-package 'tern)
 (maybe-require-package 'company-tern)
+(maybe-require-package 'typescript-mode)
+(maybe-require-package 'prettier-js)
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(rjsx-mode js2-jsx-mode js-mode)))
@@ -59,7 +61,6 @@
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
 
 
-;; Javascript nests {} and () a lot, so I find this helpful
 
 (when (and (executable-find "ag")
            (maybe-require-package 'xref-js2))
@@ -121,6 +122,14 @@
               (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
               (define-key js2-mode-map "@" 'js-doc-insert-tag)))
 
+
+
+
+(when (maybe-require-package 'add-node-modules-path)
+  (after-load 'typescript-mode
+    (add-hook 'typescript-mode-hook 'add-node-modules-path))
+  (after-load 'js2-mode
+    (add-hook 'js2-mode-hook 'add-node-modules-path)))
 
 
 (provide 'init-javascript)

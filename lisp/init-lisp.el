@@ -3,8 +3,6 @@
   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ELisp")))
 
-(require-package 'lively)
-
 (setq-default initial-scratch-message
               (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n"))
 
@@ -247,7 +245,8 @@
 (add-hook 'emacs-lisp-mode-hook 'sanityinc/run-theme-mode-hooks-if-theme t)
 
 (when (maybe-require-package 'rainbow-mode)
-  (add-hook 'sanityinc/theme-mode-hook 'rainbow-mode))
+  (add-hook 'sanityinc/theme-mode-hook 'rainbow-mode)
+  (add-hook 'help-mode-hook 'rainbow-mode))
 
 (when (maybe-require-package 'aggressive-indent)
   ;; Can be prohibitively slow with very long forms
