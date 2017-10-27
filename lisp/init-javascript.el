@@ -44,8 +44,9 @@
 
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
 
-  (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-  (add-hook 'js2-mode-hook (lambda () (add-to-list 'company-backends 'company-tern)))
+  (when (executable-find "tern")
+    (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+    (add-hook 'js2-mode-hook (lambda () (add-to-list 'company-backends 'company-tern))))
 
   (setq-default
    js2-basic-offset preferred-javascript-indent-level
