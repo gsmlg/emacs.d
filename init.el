@@ -129,6 +129,7 @@
 (require 'init-folding)
 (require 'init-dash)
 (require 'init-ledger)
+(require 'init-elfeed)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)

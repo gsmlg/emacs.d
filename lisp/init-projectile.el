@@ -12,13 +12,15 @@
 
 (after-load 'projectile
   (progn
+    (require-package 'helm-projectile)
+
     ;;(global-set-key (kbd "C-<f9>") 'projectile-mode)
     ;; set the default keymap prefix from <C-c p> to this:
     (setq projectile-keymap-prefix (kbd "C-c p"))
     (setq projectile-enable-idle-timer t)
     ;; enable caching file index
     (setq projectile-enable-caching t)
-    (define-key projectile-mode-map (kbd "C-c p f") 'helm-projectile)
+    ;; (define-key projectile-mode-map (kbd "C-c p f") 'helm-projectile)
     (define-key projectile-mode-map (kbd "C-c p g") 'helm-do-ag-project-root)
     ;; -- Switching projects -- persp-projectile is broken
     ;; use <C-c p s> `projectile-switch-project' to switch in known projects
