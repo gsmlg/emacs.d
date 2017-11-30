@@ -54,6 +54,6 @@
 
 ;; add all the icons packages for file icon
 (require-package 'all-the-icons)
-
+(setq doom-neotree-file-icons t)
 
 (provide 'init-themes)
