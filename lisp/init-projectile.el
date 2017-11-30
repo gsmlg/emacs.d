@@ -17,7 +17,9 @@
     ;;(global-set-key (kbd "C-<f9>") 'projectile-mode)
     ;; set the default keymap prefix from <C-c p> to this:
     (setq projectile-keymap-prefix (kbd "C-c p"))
+    ;; set projectile idle
     (setq projectile-enable-idle-timer t)
+    (setq projectile-idle-timer-hook '())
     ;; enable caching file index
     (setq projectile-enable-caching t)
     ;; (define-key projectile-mode-map (kbd "C-c p f") 'helm-projectile)
