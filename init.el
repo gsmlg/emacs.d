@@ -53,7 +53,7 @@
 (require-package 'command-log-mode)
 
 (require 'init-frame-hooks)
-(require 'init-sr-speedbar)
+(require 'init-neotree)
 (require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
