@@ -46,7 +46,11 @@
       (setq projectile-indexing-method 'native))
     ;; The following code means you get a menu if you hit "C-c p" and wait
     (after-load 'guide-key
-      (add-to-list 'guide-key/guide-key-sequence "C-c p"))
+      (add-to-list 'guide-key/guide-key-sequence "C-c p")
+      (add-to-list 'guide-key/guide-key-sequence "C-c p 4")
+      (add-to-list 'guide-key/guide-key-sequence "C-c p 5")
+      (add-to-list 'guide-key/guide-key-sequence "C-c p s")
+      (add-to-list 'guide-key/guide-key-sequence "C-c p x"))
     ))
 
 ;; use <C-c p f> which is `projectile-find-file' find a file in project
