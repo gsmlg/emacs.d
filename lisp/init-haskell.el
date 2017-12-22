@@ -30,7 +30,8 @@
 (add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template)
 
 (when (maybe-require-package 'hindent)
-  (add-hook 'haskell-mode-hook 'hindent-mode))
+  (add-hook 'haskell-mode-hook 'hindent-mode)
+  (setq-default hindent-extra-args nil))
 
 (after-load 'haskell-mode
   (define-key haskell-mode-map (kbd "C-c h") 'hoogle)
@@ -40,6 +41,9 @@
 (after-load 'page-break-lines
   (push 'haskell-mode page-break-lines-modes))
 
+
+(when (maybe-require-package 'dhall-mode)
+  (add-hook 'dhall-mode-hook 'sanityinc/no-trailing-whitespace))
 
 
 (provide 'init-haskell)
