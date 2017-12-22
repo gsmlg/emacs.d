@@ -23,6 +23,7 @@ should be set as same width"
 
 ;; remap Command key binding when use macOS keyboard
 (defun gsmlg/mac-osx-remap-command ()
+  (interactive)
   (progn
     (setq mac-command-modifier 'meta)
     (setq mac-option-modifier 'none)
@@ -44,6 +45,7 @@ should be set as same width"
 
 ;; remap Command key binding when use normal keyboard in macOS
 (defun gsmlg/mac-osx-unremap-command ()
+  (interactive)
   (progn
     (setq mac-command-modifier 'super)
     (setq mac-option-modifier 'meta)
