@@ -7,7 +7,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
+;; (package-initialize)
 
 (setq spacemacs-start-directory "~/.emacs.d/spacemacs/")
 (load-file (concat spacemacs-start-directory "init.el"))
