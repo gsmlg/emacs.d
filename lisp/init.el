@@ -37,7 +37,9 @@ values."
            mu4e-enable-notifications t)
      (chinese :variables
               chinese-enable-youdao-dict t)
-     osx
+     (osx :variables osx-dictionary-dictionary-choice "Simplified Chinese - English"
+          osx-command-as 'super)
+     react
      javascript
      elixir
      ;; ----------------------------------------------------------------
@@ -45,19 +47,20 @@ values."
      ;; Uncomment some ;; layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
      helm
-     ;; auto-completion
-     ;; better-defaults
+     better-defaults
      emacs-lisp
-     git
+     (git :variables
+          git-magit-status-fullscreen t)
      markdown
      org
-     ;; (shell :variables
-     ;;     shell-default-height 30
-     ;;     shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-default-height 30
+            shell-default-position 'bottom)
+     spell-checking
+     syntax-checking
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -316,7 +319,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;;     '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
   ;;       ("org-cn"   . "http://elpa.emacs-china.org/org/")
   ;;       ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
-  (setq-default git-magit-status-fullscreen t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -382,7 +384,8 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (mu4e-maildirs-extension mu4e-alert ht youdao-dictionary names chinese-word-at-point pos-tip mmm-mode markdown-toc markdown-mode gh-md editorconfig pyim pyim-basedict fcitx tern spinner ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-bullets open-junk-file org-plus-contrib neotree move-text macrostep lorem-ipsum linum-relative link-hint json-reformat info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed pkg-info epl ace-link ace-jump-helm-line helm avy helm-core popup f s dash xterm-color web-beautify unfill smeargle shell-pop reveal-in-osx-finder pbcopy pangu-spacing osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download ob-elixir mwim multi-term magit-gitflow livid-mode skewer-mode simple-httpd launchctl json-snatcher js2-refactor yasnippet multiple-cursors js-doc htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-mix flycheck-credo flycheck find-by-pinyin-dired evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help alchemist company elixir-mode ace-pinyin pinyinlib json-mode js2-mode coffee-mode ## which-key undo-tree hydra evil-unimpaired async aggressive-indent adaptive-wrap ace-window))))
+    (ibuffer-projectile flyspell-correct-helm flyspell-correct flycheck-pos-tip auto-dictionary rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode mu4e-maildirs-extension mu4e-alert ht youdao-dictionary names chinese-word-at-point pos-tip mmm-mode markdown-toc markdown-mode gh-md editorconfig pyim pyim-basedict fcitx tern spinner ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-bullets open-junk-file org-plus-contrib neotree move-text macrostep lorem-ipsum linum-relative link-hint json-reformat info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed pkg-info epl ace-link ace-jump-helm-line helm avy helm-core popup f s dash xterm-color web-beautify unfill smeargle shell-pop reveal-in-osx-finder pbcopy pangu-spacing osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download ob-elixir mwim multi-term magit-gitflow livid-mode skewer-mode simple-httpd launchctl json-snatcher js2-refactor yasnippet multiple-cursors js-doc htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-mix flycheck-credo flycheck find-by-pinyin-dired evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help alchemist company elixir-mode ace-pinyin pinyinlib json-mode js2-mode coffee-mode ## which-key undo-tree hydra evil-unimpaired async aggressive-indent adaptive-wrap ace-window)))
+ '(paradox-automatically-star nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
