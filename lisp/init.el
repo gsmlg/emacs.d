@@ -39,7 +39,7 @@ values."
               chinese-enable-youdao-dict t)
      (osx :variables osx-dictionary-dictionary-choice "Simplified Chinese - English"
           osx-command-as 'super)
-     react
+     ruby
      javascript
      elixir
      ;; ----------------------------------------------------------------
@@ -330,9 +330,9 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (spacemacs//set-monospaced-font   "Source Code Pro" "Hiragino Sans GB" 14 16)
   ;;; Set up some common mu4e variables
-  (setq mu4e-maildir "~/.mail"
-        mu4e-trash-folder "/Trash"
-        mu4e-refile-folder "/Archive"
+  (setq mu4e-maildir "~/.Mail"
+        mu4e-sent-folder "/zdns/Sent Messages"
+        mu4e-drafts-folder "/zdns/Drafts"
         mu4e-get-mail-command "mbsync -a"
         mu4e-update-interval nil
         mu4e-compose-signature-auto-include nil
@@ -341,8 +341,8 @@ you should place your code here."
 
   ;;; Mail directory shortcuts
   (setq mu4e-maildir-shortcuts
-        '(("/gmail/INBOX" . ?g)
-          ("/icloud/INBOX" . ?c)))
+        '(("/zdns/INBOX" . ?z)
+          ))
 
   ;;; Bookmarks
   (setq mu4e-bookmarks
@@ -358,20 +358,18 @@ you should place your code here."
            "All inboxes" ?i)))
 
   (setq mu4e-account-alist
-        '(("gmail"
-           ;; Under each account, set the account-specific variables you want.
-           (mu4e-sent-messages-behavior delete)
-           (mu4e-sent-folder "/gmail/[Gmail]/.Sent Mail")
-           (mu4e-drafts-folder "/gmail/[Gmail]/.Drafts")
-           (user-mail-address "gsmlg.com@gmail.com")
-           (user-full-name "GSMLG"))
-          ("icloud"
+        '(("zdns"
            (mu4e-sent-messages-behavior sent)
-           (mu4e-sent-folder "/icloud/Sent Items")
-           (mu4e-drafts-folder "/icloud/Drafts")
-           (user-mail-address "gsmlg@icloud.com")
-           (user-full-name "GSMLG"))))
+           (mu4e-sent-folder "/zdns/Sent Messages")
+           (mu4e-drafts-folder "/zdns/Drafts")
+           (user-mail-address "gaoshiming@zdns.cn")
+           (user-full-name "Gao Shi Ming"))))
   (mu4e/mail-account-reset)
+
+  (add-hook 'js2-mode-hook
+            #'(lambda ()
+                (setq js-switch-indent-offset js2-basic-offset)
+                ))
 
   )
 
@@ -392,3 +390,24 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (rvm ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ibuffer-projectile flyspell-correct-helm flyspell-correct flycheck-pos-tip auto-dictionary rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode mu4e-maildirs-extension mu4e-alert ht youdao-dictionary names chinese-word-at-point pos-tip mmm-mode markdown-toc markdown-mode gh-md editorconfig pyim pyim-basedict fcitx tern spinner ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-bullets open-junk-file org-plus-contrib neotree move-text macrostep lorem-ipsum linum-relative link-hint json-reformat info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed pkg-info epl ace-link ace-jump-helm-line helm avy helm-core popup f s dash xterm-color web-beautify unfill smeargle shell-pop reveal-in-osx-finder pbcopy pangu-spacing osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download ob-elixir mwim multi-term magit-gitflow livid-mode skewer-mode simple-httpd launchctl json-snatcher js2-refactor yasnippet multiple-cursors js-doc htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-mix flycheck-credo flycheck find-by-pinyin-dired evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help alchemist company elixir-mode ace-pinyin pinyinlib json-mode js2-mode coffee-mode ## which-key undo-tree hydra evil-unimpaired async aggressive-indent adaptive-wrap ace-window)))
+ '(paradox-automatically-star nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
