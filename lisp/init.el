@@ -334,7 +334,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (spacemacs//set-monospaced-font   "Source Code Pro" "Hiragino Sans GB" 14 16)
   ;;; Set up some common mu4e variables
-  (setq mu4e-maildir "~/Library/Application\ Support/Mail"
+  (setq mu4e-maildir "~/Library/Application Support/Mail"
         mu4e-sent-folder "/zdns/Sent Messages"
         mu4e-drafts-folder "/zdns/Drafts"
         mu4e-get-mail-command "mbsync -a"
