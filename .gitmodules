@@ -4,4 +4,4 @@
 	branch = master
 [submodule "spacemacs"]
 	path = spacemacs
-	url = https://github.com/syl20bnr/spacemacs.git
+	url = git@github.com:gsmlg/spacemacs.git
