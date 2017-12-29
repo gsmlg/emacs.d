@@ -333,6 +333,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (spacemacs//set-monospaced-font   "Source Code Pro" "Hiragino Sans GB" 14 16)
+  ;; set delete-backward-char by C-h
+  (global-set-key "\C-h" 'delete-backward-char)
   ;;; Set up some common mu4e variables
   (setq mu4e-maildir "~/Library/Application Support/Mail"
         mu4e-sent-folder "/zdns/Sent Messages"
