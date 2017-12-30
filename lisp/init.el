@@ -31,9 +31,11 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     octave
+     html
      (mu4e :variables
            mu4e-mu-binary "/usr/local/bin/mu"
-           mu4e-installation-path "/usr/local/Cellar/mu/0.9.18_1/share/emacs/site-lisp/mu/mu4e"
+           mu4e-installation-path "~/.emacs.d/site-lisp/mu4e"
            mu4e-account-alist t
            mu4e-enable-mode-line t
            mu4e-enable-notifications t)
