@@ -56,4 +56,7 @@
 (require-package 'all-the-icons)
 (setq doom-neotree-file-icons t)
 
+(maybe-require-package 'dimmer)
+
+
 (provide 'init-themes)
