@@ -1,0 +1,84 @@
+# --- zdns ---
+IMAPAccount zdns
+Host imap.exmail.qq.com
+User gaoshiming@zdns.cn
+PassCmd "security find-generic-password -s mbsync-zdns-password -w"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore zdns-remote
+Account zdns
+
+MaildirStore zdns-local
+Path ~/.Mail/zdns/
+Inbox ~/.Mail/zdns/INBOX
+Trash Trash
+
+Channel zdns-folders
+Master :zdns-remote:
+Slave :zdns-local:
+Patterns "INBOX" "Sent*" "Drafts" "Archives" "Junk*" "sendmail"
+Create Both
+Expunge Both
+SyncState *
+
+Group zdns
+Channel zdns-folders
+
+# --- qq ---
+IMAPAccount qq
+Host imap.qq.com
+User gsmlg@qq.com
+PassCmd "security find-generic-password -s mbsync-qq-password -w"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore qq-remote
+Account qq
+
+MaildirStore qq-local
+Path ~/.Mail/qq/
+Inbox ~/.Mail/qq/INBOX
+Trash Trash
+
+Channel qq-folders
+Master :qq-remote:
+Slave :qq-local:
+Patterns "INBOX" "Sent*" "Drafts" "Archives/" "Junk*" "Delete*"
+Create Both
+Expunge Both
+SyncState *
+
+Group qq
+Channel qq-folders
+
+# --- live ---
+IMAPAccount live
+Host imap-mail.outlook.com
+User gaoshiming@live.com
+PassCmd "security find-generic-password -s mbsync-live-password -w"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore live-remote
+Account live
+
+MaildirStore live-local
+Path ~/.Mail/live/
+Inbox ~/.Mail/live/INBOX
+Trash Trash
+
+Channel live-folders
+Master :live-remote:
+Slave :live-local:
+Patterns "INBOX" "Sent*" "Drafts" "Archives/" "Junk*" "Trash" "Delete*"
+Create Both
+Expunge Both
+SyncState *
+
+Group live
+Channel live-folders
+
