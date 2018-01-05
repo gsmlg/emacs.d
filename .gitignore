@@ -55,3 +55,5 @@ site-lisp/package/
 /rake.cache
 /plantuml.jar
 /elfeed
+/.cache
+/spacemacs
