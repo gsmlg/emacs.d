@@ -343,7 +343,7 @@ you should place your code here."
         mu4e-sent-folder "/zdns/Sent Messages"
         mu4e-drafts-folder "/zdns/Drafts"
         mu4e-get-mail-command "mbsync -a"
-        mu4e-update-interval 30
+        mu4e-update-interval 300
         mu4e-compose-signature-auto-include nil
         mu4e-view-show-images t
         mu4e-view-show-addresses t)
