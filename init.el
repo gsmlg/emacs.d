@@ -131,6 +131,7 @@
 (require 'init-dash)
 (require 'init-ledger)
 (require 'init-elfeed)
+(require 'init-email)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
@@ -169,8 +170,8 @@
 (require 'init-locales)
 
 
-(when (maybe-require-package 'uptimes)
-  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
+;; (when (maybe-require-package 'uptimes)
+;;   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
 
 (provide 'init)
