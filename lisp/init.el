@@ -340,7 +340,7 @@ you should place your code here."
   ;; set delete-backward-char by C-h
   (global-set-key "\C-h" 'delete-backward-char)
   ;;; Set up some common mu4e variables
-  (setq mu4e-maildir "~/.Mail"
+  (setq mu4e-maildir "~/Library/Application Support/Mail"
         mu4e-sent-folder "/zdns/Sent Messages"
         mu4e-drafts-folder "/zdns/Drafts"
         mu4e-get-mail-command "mbsync -a"
