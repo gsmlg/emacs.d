@@ -119,3 +119,5 @@ then fallback to the maildir."
 (with-eval-after-load 'org
   (require 'org-mu4e nil 'noerror)
   (require 'org-notmuch nil 'noerror))
+
+(provide 'init-email)
