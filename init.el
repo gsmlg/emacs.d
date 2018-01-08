@@ -170,8 +170,8 @@
 (require 'init-locales)
 
 
-;; (when (maybe-require-package 'uptimes)
-;;   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
+(when (maybe-require-package 'uptimes)
+  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
 
 (provide 'init)

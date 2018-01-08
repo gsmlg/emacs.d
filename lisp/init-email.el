@@ -120,4 +120,6 @@ then fallback to the maildir."
   (require 'org-mu4e nil 'noerror)
   (require 'org-notmuch nil 'noerror))
 
+(global-set-key (kbd "C-x m") 'mu4e-compose-new)
+
 (provide 'init-email)
