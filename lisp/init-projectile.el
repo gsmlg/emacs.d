@@ -22,12 +22,8 @@
     (setq projectile-idle-timer-hook '())
     ;; enable caching file index
     (setq projectile-enable-caching t)
-    ;; (define-key projectile-mode-map (kbd "C-c p f") 'helm-projectile)
-    (define-key projectile-mode-map (kbd "C-c p g") 'helm-do-ag-project-root)
-    ;; -- Switching projects -- persp-projectile is broken
-    ;; use <C-c p s> `projectile-switch-project' to switch in known projects
-    ;;(persp-mode)
-    ;;(define-key projectile-mode-map (kbd "C-c p s") 'projectile-persp-switch-project)
+    ;; enable helm-projectile
+    (helm-projectile-on)
     (when (maybe-require-package 'editorconfig)
       (editorconfig-mode 1)
       (editorconfig-apply))

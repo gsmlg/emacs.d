@@ -1,15 +1,20 @@
+;;------------------------------------------------------------------------------
 ;; setup helm incremental completion and selection narrowing framework
+;;------------------------------------------------------------------------------
 (require-package 'helm)
-(require-package 'helm-cmd-t)
-(require-package 'helm-ls-git)
+
+(require-package 'helm-descbinds)
+(helm-descbinds-mode)
+
+;;------------------------------------------------------------------------------
+;; Set Helm Dash dashdocset used by emacs
+;; https://github.com/areina/helm-dash
+;; This isn't need Dash.app
+;;------------------------------------------------------------------------------
 (require-package 'pcsv)
 (require-package 'esqlite)
 (require-package 'esqlite-helm)
 (require-package 'helm-dash)
-(require-package 'helm-proc)
-(require-package 'helm-flycheck)
-(eval-after-load 'flycheck
-  '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
 (defvar helm-dash-docsets-path "~/.docsets")
 (when (not (file-exists-p helm-dash-docsets-path))
@@ -32,8 +37,16 @@
         docs))
 (global-set-key (kbd "C-`") 'helm-dash-at-point)
 
-(require 'helm-config)
+;;------------------------------------------------------------------------------
+;; helm flycheck
+;;------------------------------------------------------------------------------
+(require-package 'helm-flycheck)
+(eval-after-load 'flycheck
+  '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
+;;------------------------------------------------------------------------------
+;; helm swoop -- fuzy search and edit with helm
+;;------------------------------------------------------------------------------
 (require-package 'helm-swoop)
 
 ;; Change the keybinds to whatever you like :)
@@ -46,8 +59,6 @@
 (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
 ;; From helm-swoop to helm-multi-swoop-all
 ;; (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-;; When doing evil-search, hand the word over to helm-swoop
-;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
 
 ;; Save buffer when helm-multi-swoop-edit complete
 (setq helm-multi-swoop-edit-save t)
@@ -61,15 +72,9 @@
 ;; If nil, you can slightly boost invoke speed in exchange for text color
 (setq helm-swoop-speed-or-color nil)
 
-;; set heml-ag
-(when (executable-find "ag")
-  (require-package 'helm-ag)
-  (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
-  (setq helm-ag-command-option "--all-text")
-  (setq helm-ag-thing-at-point 'symbol)
-  )
-
-;; replace eshell pcomplete
+;;------------------------------------------------------------------------------
+;; Replace eshell pcomplete
+;;------------------------------------------------------------------------------
 (add-hook 'eshell-mode-hook
           #'(lambda ()
               (progn
@@ -83,6 +88,12 @@
                 )))
 
 (helm-mode 1)
+(helm-adaptive-mode 1)
+(global-set-key [remap execute-extended-command] 'helm-M-x)
+(global-set-key (kbd "C-x C-j") 'helm-M-x)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-g") 'helm-do-grep-ag)
 
 (provide 'init-helm)
 

@@ -167,14 +167,6 @@
 ;;----------------------------------------------------------------------------
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
-;; To be able to M-x without meta
-(global-set-key (kbd "C-x C-m") 'helm-M-x)
-
-;; helm find and grep
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x g") 'helm-do-grep)
-(global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
-
 ;; Vimmy alternatives to M-^ and C-u M-^
 (global-set-key (kbd "C-c j") 'join-line)
 (global-set-key (kbd "C-c J") (lambda () (interactive) (join-line 1)))
@@ -185,6 +177,9 @@
 (when (maybe-require-package 'avy)
   (global-set-key (kbd "C-;") 'avy-goto-char-timer))
 
+;;----------------------------------------------------------------------------
+;; Muliple cursors
+;;----------------------------------------------------------------------------
 (require-package 'multiple-cursors)
 ;; multiple-cursors
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -192,16 +187,10 @@
 (global-set-key (kbd "C-+") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 ;; From active region to multiple cursors:
-(global-set-key (kbd "C-c m r") 'set-rectangular-region-anchor)
-(global-set-key (kbd "C-c m c") 'mc/edit-lines)
-(global-set-key (kbd "C-c m e") 'mc/edit-ends-of-lines)
-(global-set-key (kbd "C-c m a") 'mc/edit-beginnings-of-lines)
-
-
-;; Train myself to use M-f and M-b instead
-(global-unset-key [M-left])
-(global-unset-key [M-right])
-
+;; (global-set-key (kbd "C-c m r") 'set-rectangular-region-anchor)
+;; (global-set-key (kbd "C-c m c") 'mc/edit-lines)
+;; (global-set-key (kbd "C-c m e") 'mc/edit-ends-of-lines)
+;; (global-set-key (kbd "C-c m a") 'mc/edit-beginnings-of-lines)
 
 
 (defun kill-back-to-indentation ()
@@ -334,9 +323,11 @@ With arg N, insert N newlines."
 
 (require-package 'guide-key)
 (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r" "M-s" "C-h" "C-c C-a"))
+(setq guide-key/recursive-key-sequence-flag t)
 (add-hook 'after-init-hook 'guide-key-mode)
 (after-load 'guide-key
   (diminish 'guide-key-mode))
 
 
 (provide 'init-editing-utils)
+
