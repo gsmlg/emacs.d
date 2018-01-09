@@ -4,17 +4,13 @@
 ;; remap help , help is at <F1>
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
-;; set global-mode-string
-;;(add-to-list 'global-mode-string  current-time-string)
-
-;; set gnus news group
-;;(setq gnus-select-method '(nntp "news.supernews.com"))
-
-
-;; set evernote-mode not work now
-;;TODO make it work
-;;(require-package 'evernote-mode)
-;; (setq evernote-developer-token "")
-
+;;------------------------------------------------------------------------------
+;; Helm key bindings in global
+;;------------------------------------------------------------------------------
+(global-set-key [remap execute-extended-command] 'helm-M-x)
+(global-set-key (kbd "C-x C-m") 'helm-M-x)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-g") 'helm-do-grep-ag)
 
 (provide 'init-local)

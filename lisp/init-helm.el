@@ -89,11 +89,6 @@
 
 (helm-mode 1)
 (helm-adaptive-mode 1)
-(global-set-key [remap execute-extended-command] 'helm-M-x)
-(global-set-key (kbd "C-x C-j") 'helm-M-x)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x C-g") 'helm-do-grep-ag)
 
 (provide 'init-helm)
 

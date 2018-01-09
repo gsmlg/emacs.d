@@ -81,7 +81,7 @@
 (require 'init-whitespace)
 
 (require 'init-vc)
-(require 'init-darcs)
+;;(require 'init-darcs)
 (require 'init-git)
 (require 'init-github)
 
@@ -132,6 +132,7 @@
 (require 'init-ledger)
 (require 'init-elfeed)
 (require 'init-email)
+(require 'init-chinese)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)

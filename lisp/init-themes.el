@@ -48,7 +48,11 @@
 (spaceline-all-the-icons--setup-paradox)         ;; Enable Paradox mode line
 (spaceline-all-the-icons--setup-neotree)         ;; Enable Neotree mode line
 
+(setq spaceline-show-default-input-method t)
+
+;;------------------------------------------------------------------------------
 ;; add all the icons packages for file icon
+;;------------------------------------------------------------------------------
 (require-package 'all-the-icons)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (maybe-require-package 'dimmer)

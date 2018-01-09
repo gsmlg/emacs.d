@@ -1,7 +1,8 @@
 -/semanticdb
 -/url
 -/edts
--/elpa*
+-/elpa
+-/elps-*
 -/.cache
 -ac-comphist.dat
 -.emacs.desktop
