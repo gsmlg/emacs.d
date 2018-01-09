@@ -1,6 +1,13 @@
 ;; init-local local settings
+;;------------------------------------------------------------------------------
+;; Set Org Mode Variables
+;;------------------------------------------------------------------------------
+(setq org-directory "~/Documents/org/"
+      org-agenda-files "~/Documents/org/.agenda_files")
 
-;; key bindings
+;;------------------------------------------------------------------------------
+;; Global key binding
+;;------------------------------------------------------------------------------
 ;; remap help , help is at <F1>
 (global-set-key (kbd "C-h") 'delete-backward-char)
 

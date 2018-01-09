@@ -1,12 +1,10 @@
 (require-package 'pyim)
 (require-package 'pyim-wbdict)
 
-(setq default-input-method "pyim"
-      pyim-page-tooltip t
-      pyim-directory (expand-file-name "pyim/" gsmlg-cache-directory)
-      pyim-dcache-directory (expand-file-name "dcache/" pyim-directory)
-      pyim-default-scheme 'wubi)
-
+(setq  pyim-page-tooltip t
+       pyim-directory (expand-file-name "pyim/" gsmlg-cache-directory)
+       pyim-dcache-directory (expand-file-name "dcache/" pyim-directory)
+       pyim-default-scheme 'wubi)
 
 ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
 ;; 我自己使用的中英文动态切换规则是：
@@ -37,7 +35,7 @@
           #'(lambda ()
               (pyim-restart-1 t)
               (pyim-wbdict-gbk-enable)
-              ))
+              (set-input-method 'pyim)))
 
 ;; :bind
 ;; (("M-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合

@@ -67,8 +67,8 @@
 (require 'init-flycheck)
 
 (require 'init-recentf)
-;; (require 'init-smex)
-;; (require 'init-ivy)
+(require 'init-smex)
+(require 'init-ivy)
 (require 'init-hippie-expand)
 (require 'init-yasnippet)
 (require 'init-company)
