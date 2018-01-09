@@ -35,11 +35,8 @@
           #'(lambda ()
               (pyim-restart-1 t)
               (pyim-wbdict-gbk-enable)
-              (set-input-method 'pyim)))
-
-;; :bind
-;; (("M-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合
-;;  ("C-;" . pyim-delete-word-from-personal-buffer))
+              (set-input-method 'pyim)
+              (global-set-key (kbd "C-M-j") 'pyim-convert-code-at-point)))
 
 
 (provide 'init-chinese)
