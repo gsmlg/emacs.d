@@ -113,8 +113,9 @@ then fallback to the maildir."
 (with-eval-after-load 'mu4e
   (mu4e/mail-account-reset)
   (mu4e-maildirs-extension-load)
+  (mu4e-alert-enable-mode-line-display)
   (mu4e-alert-enable-notifications)
-  (mu4e-alert-enable-mode-line-display))
+  (mu4e-alert-set-default-style 'notifier))
 
 (with-eval-after-load 'org
   (require 'org-mu4e nil 'noerror)
