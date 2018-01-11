@@ -1,0 +1,9 @@
+* Blogs                                                              :elfeed:
+** Software Development                                                 :dev:
+*** Emacs                                                    :emacs:
+**** http://blog.binchen.org/rss.xml
+**** entry-title: \(emacs\|org-mode\)
+**** http://planet.emacsen.org/atom.xml
+*** Web Development                                                     :web:
+**** http://blog.atom.io/feed.xml                                               :editor:
+**** http://www.ruanyifeng.com/blog/atom.xml
