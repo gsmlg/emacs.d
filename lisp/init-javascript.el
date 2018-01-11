@@ -58,17 +58,30 @@
 ;; js-mode
 (setq-default js-indent-level preferred-javascript-indent-level)
 
+;; rjx-mode
+;; fix rjsx-mode indents closed html tag with extra spaces
+(defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
+  "Workaround `sgml-mode' and follow airbnb component style."
+  (let* ((cur-line (buffer-substring-no-properties
+                    (line-beginning-position)
+                    (line-end-position))))
+    (if (string-match "^\\( +\\)\/?> *$" cur-line)
+        (let* ((empty-spaces (match-string 1 cur-line)))
+          (replace-regexp empty-spaces
+                          (make-string (- (length empty-spaces) sgml-basic-offset) 32)
+                          nil
+                          (line-beginning-position) (line-end-position))))))
 
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
 
 
 
-(when (and (executable-find "ag")
-           (maybe-require-package 'xref-js2))
-  (after-load 'js2-mode
-    (define-key js2-mode-map (kbd "M-.") nil)
-    (add-hook 'js2-mode-hook
-              (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
+;; (when (and (executable-find "ag")
+;;            (maybe-require-package 'xref-js2))
+;;   (after-load 'js2-mode
+;;     (define-key js2-mode-map (kbd "M-.") nil)
+;;     (add-hook 'js2-mode-hook
+;;               (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
 
 
 
