@@ -326,6 +326,11 @@ typical word processor."
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
 
 
+;; set outline icon
+(require-package 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+
 ;; ;; Show iCal calendars in the org agenda
 ;; (when (and *is-a-mac* (require 'org-mac-iCal nil t))
 ;;   (setq org-agenda-include-diary t

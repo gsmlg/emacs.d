@@ -34,6 +34,7 @@
 (require-package 'spaceline-all-the-icons)
 
 (require 'spaceline-config)
+(setq spaceline-all-the-icons-slim-render t)
 
 (spaceline-helm-mode)
 (spaceline-info-mode)
