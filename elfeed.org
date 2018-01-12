@@ -2,6 +2,7 @@
 ** Software Development                                                 :dev:
 *** Emacs                                                    :emacs:
 **** http://blog.binchen.org/rss.xml
+**** http://www.masteringemacs.org/feed
 **** entry-title: \(emacs\|org-mode\)
 **** http://planet.emacsen.org/atom.xml
 *** Web Development                                                     :web:
