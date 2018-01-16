@@ -34,7 +34,9 @@
 (require-package 'spaceline-all-the-icons)
 
 (require 'spaceline-config)
-(setq spaceline-all-the-icons-slim-render t)
+(setq spaceline-all-the-icons-slim-render t
+      spaceline-all-the-icons-separator-type 'arrow
+      spaceline-all-the-icons-icon-set-sun-time 'sun/moon)
 
 (spaceline-helm-mode)
 (spaceline-info-mode)
