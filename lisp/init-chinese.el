@@ -9,7 +9,7 @@
     (set-fontset-font (frame-parameter nil 'font) charset
                       (font-spec :family chinese :size chinese-size))))
 
-(gsmlg//set-monospaced-font  "Source Code Pro" "Hiragino Sans GB" 14 16)
+(gsmlg//set-monospaced-font  "Source Code Pro" "Hiragino Sans GB" 16 20)
 
 (setq  pyim-page-tooltip t
        pyim-directory (expand-file-name "pyim/" gsmlg-cache-directory)
