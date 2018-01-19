@@ -41,7 +41,7 @@
 (spaceline-helm-mode)
 (spaceline-info-mode)
 
-(spaceline-all-the-icons-theme 'input-method 'buffer-encoding-abbrev)
+(spaceline-all-the-icons-theme 'input-method 'buffer-encoding-abbrev 'org-pomodoro 'mu4e-alert-segment)
 (spaceline-all-the-icons--setup-anzu)            ;; Enable anzu searching
 (spaceline-all-the-icons--setup-package-updates) ;; Enable package update indicator
 (spaceline-all-the-icons--setup-git-ahead)       ;; Enable # of commits ahead of upstream in git
