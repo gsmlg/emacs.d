@@ -107,6 +107,8 @@ typical word processor."
          "* NEXT %?\n%U\n" :clock-resume t)
         ("n" "note" entry (file "note.org")
          "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
+        ("b" "bookmark" entry (file "bookmark.org")
+         "* %? \n%U\n" :clock-resume t)
         ))
 
 
@@ -325,12 +327,16 @@ typical word processor."
 (after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
 
-
+
 ;; set outline icon
 (require-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+
+;; org-protocol
+(require 'org-protocol)
 
+
 ;; Speed Commands
 ;; Speed commands allow access to frequently used commands when on the beginning of a headline - similar to one-key agenda commands.
 (setq org-use-speed-commands t)
