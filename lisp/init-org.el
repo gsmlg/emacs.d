@@ -102,6 +102,7 @@ typical word processor."
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
+;; docs [[https://orgmode.org/manual/Template-elements.html]]
 (setq org-capture-templates
       `(("t" "todo" entry (file "todo.org")  ; "" => `org-default-notes-file'
          "* NEXT %?\n%U\n" :clock-resume t)
@@ -159,12 +160,20 @@ typical word processor."
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
               (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
-              (sequence "WAITING(w@/!)" "DELEGATED(e!)" "HOLD(h)" "|" "CANCELLED(c@/!)")))
+              (sequence "WAITING(w@/!)" "DELEGATED(e!)" "HOLD(h)" "|" "CANCELLED(c@/!)" "MEETING")))
       org-todo-repeat-to-state "NEXT")
 
 (setq org-todo-keyword-faces
-      (quote (("NEXT" :inherit warning)
-              ("PROJECT" :inherit font-lock-string-face))))
+      (quote (;;("NEXT" :inherit warning)
+              ("PROJECT" :inherit font-lock-string-face)
+              ("TODO" :foreground "red" :weight bold)
+              ("NEXT" :foreground "blue" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("WAITING" :foreground "orange" :weight bold)
+              ("HOLD" :foreground "magenta" :weight bold)
+              ("CANCELLED" :foreground "forest green" :weight bold)
+              ("MEETING" :foreground "forest green" :weight bold)
+              ("PHONE" :foreground "forest green" :weight bold))))
 
 
 
