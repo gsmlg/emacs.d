@@ -1,4 +1,5 @@
 ;; -*- lexical-binding: t -*-
+(setq debug-on-error t)
 
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
@@ -47,7 +48,6 @@
 ;;----------------------------------------------------------------------------
 
 (require-package 'wgrep)
-(require-package 'project-local-variables)
 (require-package 'diminish)
 (require-package 'scratch)
 (require-package 'command-log-mode)
@@ -69,6 +69,7 @@
 (require 'init-recentf)
 (require 'init-smex)
 (require 'init-ivy)
+;;(require 'init-helm)
 (require 'init-hippie-expand)
 (require 'init-yasnippet)
 (require 'init-company)
@@ -102,11 +103,11 @@
 (require 'init-css)
 (require 'init-haml)
 (require 'init-http)
-(require 'init-python-mode)
+(require 'init-python)
 (require 'init-haskell)
 (require 'init-elm)
 (require 'init-purescript)
-(require 'init-ruby-mode)
+(require 'init-ruby)
 (require 'init-rails)
 (require 'init-sql)
 (require 'init-rust)
@@ -114,6 +115,8 @@
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
+(require 'init-nix)
+(maybe-require-package 'nginx-mode)
 
 (require 'init-paredit)
 (require 'init-lisp)
@@ -129,6 +132,9 @@
 
 (require 'init-folding)
 (require 'init-dash)
+
+;;(require 'init-twitter)
+;; (require 'init-mu)
 (require 'init-ledger)
 (require 'init-elfeed)
 (require 'init-email)
@@ -150,7 +156,6 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
-
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
