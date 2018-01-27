@@ -62,6 +62,7 @@ values."
           git-magit-status-fullscreen t)
      markdown
      (org :variables
+          org-agenda-files ".agenda_files"
           org-directory "~/Documents/org")
      (shell :variables
             shell-default-shell 'eshell
@@ -124,7 +125,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'emacs
+   dotspacemacs-editing-style 'vim
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -436,11 +437,13 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(org-agenda-files "~/Documents/org/.agenda_files")
+ '(org-directory "~/Documents/org/")
  '(package-selected-packages
    (quote
-    (rvm ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ibuffer-projectile flyspell-correct-helm flyspell-correct flycheck-pos-tip auto-dictionary rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode mu4e-maildirs-extension mu4e-alert ht youdao-dictionary names chinese-word-at-point pos-tip mmm-mode markdown-toc markdown-mode gh-md editorconfig pyim pyim-basedict fcitx tern spinner ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-bullets open-junk-file org-plus-contrib neotree move-text macrostep lorem-ipsum linum-relative link-hint json-reformat info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed pkg-info epl ace-link ace-jump-helm-line helm avy helm-core popup f s dash xterm-color web-beautify unfill smeargle shell-pop reveal-in-osx-finder pbcopy pangu-spacing osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download ob-elixir mwim multi-term magit-gitflow livid-mode skewer-mode simple-httpd launchctl json-snatcher js2-refactor yasnippet multiple-cursors js-doc htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-mix flycheck-credo flycheck find-by-pinyin-dired evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help alchemist company elixir-mode ace-pinyin pinyinlib json-mode js2-mode coffee-mode ## which-key undo-tree hydra evil-unimpaired async aggressive-indent adaptive-wrap ace-window)))
- '(paradox-automatically-star nil)
- )
+    (yaml-mode org-brain evil-org nginx-mode company-tern rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ibuffer-projectile flyspell-correct-helm flyspell-correct flycheck-pos-tip auto-dictionary rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode mu4e-maildirs-extension mu4e-alert ht youdao-dictionary names chinese-word-at-point pos-tip mmm-mode markdown-toc markdown-mode gh-md editorconfig pyim pyim-basedict fcitx tern spinner ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-bullets open-junk-file org-plus-contrib neotree move-text macrostep lorem-ipsum linum-relative link-hint json-reformat info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed pkg-info epl ace-link ace-jump-helm-line helm avy helm-core popup f s dash xterm-color web-beautify unfill smeargle shell-pop reveal-in-osx-finder pbcopy pangu-spacing osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download ob-elixir mwim multi-term magit-gitflow livid-mode skewer-mode simple-httpd launchctl json-snatcher js2-refactor yasnippet multiple-cursors js-doc htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-mix flycheck-credo flycheck find-by-pinyin-dired evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help alchemist company elixir-mode ace-pinyin pinyinlib json-mode js2-mode coffee-mode ## which-key undo-tree hydra evil-unimpaired async aggressive-indent adaptive-wrap ace-window)))
+ '(paradox-automatically-star nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
