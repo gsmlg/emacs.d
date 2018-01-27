@@ -56,3 +56,5 @@ site-lisp/package/
 /plantuml.jar
 /elfeed
 /.cache
+/diary
+/games
