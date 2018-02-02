@@ -638,26 +638,26 @@ so change the default 'F' binding in the agenda to allow both"
     (define-key org-mode-map (kbd "M-h") nil)
     (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
-(after-load 'org
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   `((R . t)
-     (ditaa . t)
-     (dot . t)
-     (emacs-lisp . t)
-     (gnuplot . t)
-     (haskell . nil)
-     (latex . t)
-     (ledger . t)
-     (ocaml . nil)
-     (octave . t)
-     (plantuml . t)
-     (python . t)
-     (ruby . t)
-     (screen . nil)
-     (,(if (locate-library "ob-sh") 'sh 'shell) . t)
-     (sql . nil)
-     (sqlite . t))))
+;; (after-load 'org
+;;   (org-babel-do-load-languages
+;;    'org-babel-load-languages
+;;    `((R . t)
+;;      (ditaa . t)
+;;      (dot . t)
+;;      (emacs-lisp . t)
+;;      (gnuplot . t)
+;;      (haskell . nil)
+;;      (latex . t)
+;;      (ledger . t)
+;;      (ocaml . nil)
+;;      (octave . t)
+;;      (plantuml . t)
+;;      (python . t)
+;;      (ruby . t)
+;;      (screen . nil)
+;;      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
+;;      (sql . nil)
+;;      (sqlite . t))))
 
 
 (provide 'init-org)
