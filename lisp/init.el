@@ -30,6 +30,11 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
+   ;; ----------------------------------------------------------------
+   ;; Example of useful layers you may want to use right away.
+   ;; Uncomment some ;; layer names and press <SPC f e R> (Vim style) or
+   ;; <M-m f e R> (Emacs style) to install them.
+   ;; ----------------------------------------------------------------
    '(
      yaml
      nginx
@@ -41,19 +46,13 @@ values."
            mu4e-account-alist t
            mu4e-enable-mode-line t
            mu4e-enable-notifications t)
-     (chinese :variables
-              chinese-enable-youdao-dict t)
+     chinese
      (osx :variables
           osx-dictionary-dictionary-choice "Simplified Chinese - English"
           osx-command-as 'super)
      ruby
-     javascript
+     awesome-javascript
      elixir
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some ;; layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      helm
      better-defaults
@@ -62,13 +61,13 @@ values."
           git-magit-status-fullscreen t)
      markdown
      (org :variables
-          org-agenda-files ".agenda_files"
+          org-agenda-files "~/Documents/org/.agenda_files"
           org-directory "~/Documents/org")
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
+     ;; spell-checking
      syntax-checking
      )
    ;; List of additional packages that will be installed without being
@@ -109,7 +108,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 15
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -118,7 +117,7 @@ values."
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
-   dotspacemacs-elpa-subdirectory nil
+   dotspacemacs-elpa-subdirectory 'emacs-version
    ;; One of `vim', `emacs' or `hybrid'.
    ;; `hybrid' is like `vim' except that `insert state' is replaced by the
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
@@ -142,6 +141,7 @@ values."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 5)
+                                (bookmarks . 5)
                                 (projects . 7))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
@@ -152,12 +152,13 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light)
+   dotspacemacs-mode-line-theme 'spacemacs
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -314,7 +315,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
 
 (defun dotspacemacs/user-init ()
@@ -324,10 +325,13 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   ;; (setq configuration-layer--elpa-archives
-  ;;     '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-  ;;       ("org-cn"   . "http://elpa.emacs-china.org/org/")
-  ;;       ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+  ;;     '(("melpa-cn" . "http://elpa.gsmlg.club/melpa/")
+  ;;       ("org-cn"   . "http://elpa.gsmlg.club/org/")
+  ;;       ("gnu-cn"   . "http://elpa.gsmlg.club/gnu/")))
+  (setenv "PATH" (concat (getenv "PATH") ":/Users/gao/.npm_modules/bin"))
+  (setq exec-path (append exec-path '("/Users/gao/.npm_modules/bin")))
   )
 
 (defun dotspacemacs/user-config ()
@@ -337,11 +341,15 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (spacemacs//set-monospaced-font   "Source Code Pro" "Hiragino Sans GB" 14 16)
+  (spacemacs//set-monospaced-font   "Source Code Pro" "Hiragino Sans GB" 16 20)
   ;; set delete-backward-char by C-h
   (global-set-key "\C-h" 'delete-backward-char)
+
+  ;;;------------------------------------------------------------------------------
+  ;;; Email settings
+  ;;;------------------------------------------------------------------------------
   ;;; Set up some common mu4e variables
-  (setq mu4e-maildir "~/Library/Application Support/Mail"
+  (setq mu4e-maildir "~/.Mail"
         mu4e-sent-folder "/zdns/Sent Messages"
         mu4e-drafts-folder "/zdns/Drafts"
         mu4e-get-mail-command "mbsync -a"
@@ -349,19 +357,17 @@ you should place your code here."
         mu4e-compose-signature-auto-include nil
         mu4e-view-show-images t
         mu4e-view-show-addresses t)
-
   ;;; Mail directory shortcuts
   (setq mu4e-maildir-shortcuts
         '(("/zdns/INBOX" . ?z)
           ("/qq/INBOX" . ?q)
           ("/live/INBOX" . ?l)))
-
   ;;; Bookmarks
   (setq mu4e-bookmarks
         `(("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
           ("date:today..now" "Today's messages" ?t)
           ("date:7d..now" "Last 7 days" ?w)
-          ("flog:attach" "Messages with attachment" ?a)
+          ("flag:attach" "Messages with attachment" ?a)
           ("mime:image/*" "Messages with images" ?p)
           ("size:5M..500M" "Big messages" ?b)
           ("flag:flagged" "Flagged messages" ?f)
@@ -371,7 +377,6 @@ you should place your code here."
                           (concat "maildir:" (car maildir)))
                         mu4e-maildir-shortcuts) " OR ")
            "All inboxes" ?i)))
-
   (setq mu4e-account-alist
         '(("zdns"
            (mu4e-sent-messages-behavior sent)
@@ -395,18 +400,40 @@ you should place your code here."
            (user-mail-address "gaoshiming@live.com")
            (user-full-name "Gao"))))
   (mu4e/mail-account-reset)
-
-  (add-hook 'js2-mode-hook
-            #'(lambda ()
-                (setq js-switch-indent-offset js2-basic-offset)
-                ))
-
-  ;; use msmtp
+  ;; use msmtp to send email
   (setq message-send-mail-function 'message-send-mail-with-sendmail)
   (setq sendmail-program "/usr/local/bin/msmtp")
   ;; tell msmtp to choose the SMTP server according to the from field in the outgoing email
   (setq message-sendmail-extra-arguments '("--read-envelope-from"))
   (setq message-sendmail-f-is-evil 't)
+
+  ;; set javascript
+  (defcustom preferred-javascript-mode
+    (first (remove-if-not #'fboundp '(rjsx-mode js2-jsx-mode js-mode)))
+    "Javascript mode to use for .js files."
+    :type 'symbol
+    :group 'programming
+    :options '(rjsx-mode js2-jsx-mode js-mode))
+  ;; fix rjsx-mode indents closed html tag with extra spaces
+  (defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
+    "Workaround `sgml-mode' and follow airbnb component style."
+    (let* ((cur-line (buffer-substring-no-properties
+                      (line-beginning-position)
+                      (line-end-position))))
+      (if (string-match "^\\( +\\)\/?> *$" cur-line)
+          (let* ((empty-spaces (match-string 1 cur-line)))
+            (replace-regexp empty-spaces
+                            (make-string (- (length empty-spaces) sgml-basic-offset) 32)
+                            nil
+                            (line-beginning-position) (line-end-position))))))
+
+  (add-hook 'js2-mode-hook
+            #'(lambda ()
+                (setq js-switch-indent-offset js2-basic-offset)
+                (tern-mode t)
+                (add-to-list 'company-backends 'company-tern)
+                ))
+
 
   )
 
@@ -437,12 +464,9 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(org-agenda-files "~/Documents/org/.agenda_files")
- '(org-directory "~/Documents/org/")
  '(package-selected-packages
    (quote
-    (yaml-mode org-brain evil-org nginx-mode company-tern rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ibuffer-projectile flyspell-correct-helm flyspell-correct flycheck-pos-tip auto-dictionary rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode mu4e-maildirs-extension mu4e-alert ht youdao-dictionary names chinese-word-at-point pos-tip mmm-mode markdown-toc markdown-mode gh-md editorconfig pyim pyim-basedict fcitx tern spinner ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-bullets open-junk-file org-plus-contrib neotree move-text macrostep lorem-ipsum linum-relative link-hint json-reformat info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed pkg-info epl ace-link ace-jump-helm-line helm avy helm-core popup f s dash xterm-color web-beautify unfill smeargle shell-pop reveal-in-osx-finder pbcopy pangu-spacing osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download ob-elixir mwim multi-term magit-gitflow livid-mode skewer-mode simple-httpd launchctl json-snatcher js2-refactor yasnippet multiple-cursors js-doc htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-mix flycheck-credo flycheck find-by-pinyin-dired evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help alchemist company elixir-mode ace-pinyin pinyinlib json-mode js2-mode coffee-mode ## which-key undo-tree hydra evil-unimpaired async aggressive-indent adaptive-wrap ace-window)))
+    (symon string-inflection spaceline-all-the-icons all-the-icons memoize ruby-refactor ruby-hash-syntax password-generator overseer org-mime nameless impatient-mode helm-purpose window-purpose imenu-list helm-mu evil-lion evil-cleverparens paredit counsel-projectile counsel swiper ivy centered-cursor-mode yaml-mode org-brain evil-org nginx-mode company-tern rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ibuffer-projectile flyspell-correct-helm flyspell-correct flycheck-pos-tip auto-dictionary rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode mu4e-maildirs-extension mu4e-alert ht youdao-dictionary names chinese-word-at-point pos-tip mmm-mode markdown-toc markdown-mode gh-md editorconfig pyim pyim-basedict fcitx tern spinner ws-butler winum volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-bullets open-junk-file org-plus-contrib neotree move-text macrostep lorem-ipsum linum-relative link-hint json-reformat info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump diminish column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed pkg-info epl ace-link ace-jump-helm-line helm avy helm-core popup f s dash xterm-color web-beautify unfill smeargle shell-pop reveal-in-osx-finder pbcopy pangu-spacing osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download ob-elixir mwim multi-term magit-gitflow livid-mode skewer-mode simple-httpd launchctl json-snatcher js2-refactor yasnippet multiple-cursors js-doc htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-mix flycheck-credo flycheck find-by-pinyin-dired evil-magit magit magit-popup git-commit ghub let-alist with-editor eshell-z eshell-prompt-extras esh-help alchemist company elixir-mode ace-pinyin pinyinlib json-mode js2-mode coffee-mode ## which-key undo-tree hydra evil-unimpaired async aggressive-indent adaptive-wrap ace-window)))
  '(paradox-automatically-star nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
