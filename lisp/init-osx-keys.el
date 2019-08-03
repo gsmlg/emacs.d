@@ -1,3 +1,7 @@
+;;; init-osx-keys.el --- Configure keys specific to MacOS -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
+
 (when *is-a-mac*
   (if (eq (getenv "KEYBOARD_TYPE") "windows")
       (gsmlg/mac-osx-unremap-command)
@@ -22,3 +26,4 @@
 
 
 (provide 'init-osx-keys)
+;;; init-osx-keys.el ends here

@@ -2,6 +2,9 @@
 ;; set projectile for manage projects
 ;; projectile.el at https://github.com/bbatsov/projectile
 ;;--------------------------------------------------------------------
+;;; init-projectile.el --- Use Projectile for navigation within projects -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (when (maybe-require-package 'projectile)
   (add-hook 'after-init-hook 'projectile-mode))
@@ -115,3 +118,4 @@
 ;; use `M-x' `customize-group' `RET' `projectile' `RET'
 
 (provide 'init-projectile)
+;;; init-projectile.el ends here
