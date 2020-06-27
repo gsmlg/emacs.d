@@ -6,8 +6,8 @@
 
 ;;; Code:
 
-;; Produce backtraces when errors occur
-(setq debug-on-error t)
+;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
+;;(setq debug-on-error t)
 
 (let ((minver "24.4"))
   (when (version< emacs-version minver)
@@ -72,7 +72,7 @@
 (require 'init-recentf)
 (require 'init-smex)
 (require 'init-ivy)
-(require 'init-helm)
+;; (require 'init-helm)
 (require 'init-hippie-expand)
 (require 'init-yasnippet)
 (require 'init-company)
@@ -91,7 +91,7 @@
 (require 'init-projectile)
 
 (require 'init-compile)
-;;(require 'init-crontab)
+(require 'init-crontab)
 (require 'init-textile)
 (require 'init-markdown)
 (require 'init-csv)
@@ -112,12 +112,13 @@
 (require 'init-ruby)
 (require 'init-rails)
 (require 'init-sql)
+(require 'init-nim)
 (require 'init-rust)
 (require 'init-toml)
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
-;;(require 'init-nix)
+(require 'init-nix)
 (maybe-require-package 'nginx-mode)
 
 (require 'init-paredit)
@@ -143,20 +144,25 @@
 (require 'init-chinese)
 ;; Extra packages which don't require any configuration
 
+(require-package 'sudo-edit)
 (require-package 'gnuplot)
 (require-package 'lua-mode)
 (require-package 'htmlize)
-(require-package 'dsvn)
 (when *is-a-mac*
   (require-package 'osx-location))
 (unless (eq system-type 'windows-nt)
   (maybe-require-package 'daemons))
 (maybe-require-package 'dotenv-mode)
+(maybe-require-package 'shfmt)
 
 (when (maybe-require-package 'uptimes)
   (setq-default uptimes-keep-count 200)
   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
+(when (fboundp 'global-eldoc-mode)
+  (add-hook 'after-init-hook 'global-eldoc-mode))
+
+(require 'init-direnv)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient

@@ -11,7 +11,7 @@
 
 (add-hook 'paredit-mode-hook 'maybe-map-paredit-newline)
 
-(after-load 'paredit
+(with-eval-after-load 'paredit
   (diminish 'paredit-mode " Par")
   ;; Suppress certain paredit keybindings to avoid clashes, including
   ;; my global binding of M-?
@@ -41,14 +41,6 @@
   (if (memq this-command paredit-minibuffer-commands)
       (enable-paredit-mode)))
 
-;; ----------------------------------------------------------------------------
-;; Enable some handy paredit functions in all prog modes
-;; ----------------------------------------------------------------------------
-
-(require-package 'paredit-everywhere)
-(after-load 'paredit-everywhere
-  (define-key paredit-everywhere-mode-map (kbd "M-s") nil))
-(add-hook 'prog-mode-hook 'paredit-everywhere-mode)
 
 (provide 'init-paredit)
 ;;; init-paredit.el ends here

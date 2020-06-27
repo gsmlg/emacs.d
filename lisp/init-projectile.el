@@ -13,9 +13,11 @@
 ;; (require-package 'perspective)
 ;; (require-package 'persp-projectile)
 
-(after-load 'projectile
-  (progn
-    (require-package 'helm-projectile)
+  (when (executable-find "rg")
+    (setq-default projectile-generic-command "rg --files --hidden"))
+
+  (with-eval-after-load 'projectile
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
     ;;(global-set-key (kbd "C-<f9>") 'projectile-mode)
     ;; set the default keymap prefix from <C-c p> to this:

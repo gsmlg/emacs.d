@@ -36,7 +36,7 @@
 
 ;; Change some defaults: customize them to override
 (setq-default js2-bounce-indent-p nil)
-(after-load 'js2-mode
+(with-eval-after-load 'js2-mode
   ;; Disable js2 mode's syntax error highlighting by default...
   (setq-default js2-mode-show-parse-errors nil
                 js2-mode-show-strict-warnings nil)
@@ -84,18 +84,18 @@
 
 
 
-;; (when (and (executable-find "ag")
-;;            (maybe-require-package 'xref-js2))
-;;   (after-load 'js2-mode
-;;     (define-key js2-mode-map (kbd "M-.") nil)
-;;     (add-hook 'js2-mode-hook
-;;               (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
+(when (and (executable-find "ag")
+           (maybe-require-package 'xref-js2))
+  (with-eval-after-load 'js2-mode
+    (define-key js2-mode-map (kbd "M-.") nil)
+    (add-hook 'js2-mode-hook
+              (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
 
 
 
 ;;; Coffeescript
 
-(after-load 'coffee-mode
+(with-eval-after-load 'coffee-mode
   (setq-default coffee-js-mode 'js2-mode
                 coffee-tab-width js-indent-level))
 
@@ -125,7 +125,7 @@
 ;; ---------------------------------------------------------------------------
 
 (when (maybe-require-package 'skewer-mode)
-  (after-load 'skewer-mode
+  (with-eval-after-load 'skewer-mode
     (add-hook 'skewer-mode-hook
               (lambda () (inferior-js-keys-mode -1)))))
 
@@ -145,9 +145,9 @@
 
 
 (when (maybe-require-package 'add-node-modules-path)
-  (after-load 'typescript-mode
+  (with-eval-after-load 'typescript-mode
     (add-hook 'typescript-mode-hook 'add-node-modules-path))
-  (after-load 'js2-mode
+  (with-eval-after-load 'js2-mode
     (add-hook 'js2-mode-hook 'add-node-modules-path)))
 
 
