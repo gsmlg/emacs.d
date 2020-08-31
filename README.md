@@ -15,13 +15,14 @@ in the approximate order of how much I use them, from most to least:
 
 * Haskell / Purescript / Elm
 * Ruby / Ruby on Rails
+* SQL
 * CSS / LESS / SASS / SCSS
 * Javascript / Typescript / Coffeescript
 * HTML / HAML / Markdown / Textile / ERB
-* Rust
-* Python
-* Clojure (with Cider and nRepl)
 * Common Lisp (with Slime)
+* Python
+* Rust
+* Clojure (with Cider and nRepl)
 * PHP
 * Erlang
 
@@ -33,8 +34,8 @@ other languages.
 
 ## Supported Emacs versions
 
-The config should run on Emacs 24.4 or greater and is designed to
-degrade smoothly - see the Travis build - but note that much newer
+The config should run on Emacs 24.5 or greater and is designed to
+degrade smoothly - see the CI build - but note that much newer
 versions are required for an increasing number of key packages, so to
 get full functionality you should use the latest Emacs version
 available to you.
