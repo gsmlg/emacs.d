@@ -11,6 +11,7 @@ CVS
 *~
 .cvsignore
 .*.lock
+.spacemacs.env
 /tramp
 /TODO
 /anything-c-adaptive-history
