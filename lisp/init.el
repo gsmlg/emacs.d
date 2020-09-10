@@ -32,34 +32,35 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(react
-     html
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
-     ;; `M-m f e R' (Emacs style) to install them.
+     ;; `M-m f e R' (Emacs style) to installrthem.
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
+
      emacs-lisp
+     elixir
+     javascript
+     typescript
+     markdown
+     react
+     go
+     html
+
      helm
      git
-     markdown
      multiple-cursors
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     org
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
+     syntax-checking
      version-control
-     (osx :variables osx-command-as       'hyper
-          osx-option-as        'meta
-          osx-control-as       'control
-          osx-function-as      nil
-          osx-right-command-as 'left
-          osx-right-option-as  'left
-          osx-right-control-as 'left
+     (osx :variables
           osx-swap-option-and-command t)
      treemacs)
 
